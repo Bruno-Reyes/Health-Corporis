@@ -1,0 +1,11 @@
+/* .signup{
+    background: url(../img/signup4.png)no-repeat 1rem 8rem;
+    background-size: 30rem;    
+    width: 100vw;
+    height: 100vh;
+} */
+.card-body{    
+    opacity: .85;
+    padding: 1rem 20px;
+    box-shadow: 0px 0px 3px #848484;
+}

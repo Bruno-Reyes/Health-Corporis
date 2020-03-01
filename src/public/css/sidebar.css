@@ -1,0 +1,104 @@
+body {	
+	overflow-x: hidden;
+} 
+
+.sidebar{
+	position: absolute;
+	position:fixed;
+	width: 249px;
+	height: 100%;
+	background: #333;
+	color: black;
+	outline: 1px solid #2a2a2a;	
+}
+
+.sidebar h2{
+	text-align: center;
+	margin: 0;
+	padding: 10px;
+	background: #2a2a2a;
+	color: white;
+}
+
+.sidebar h3{
+	text-align: center;
+	margin: 0;
+	padding: 10px;
+	background: #2a2a2a;
+	color: white;
+}
+
+.sidebar ul{
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.sidebar li{
+	outline: 1px solid #2a2a2a;
+	transition: all 0.3s;
+}
+
+.pri:hover{
+	background: #444;
+	border-left: 10px solid rgb(146, 225, 68);
+} 
+
+.sidebar a{
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px;
+}
+
+.sidebar button{
+	display: block;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px;
+	background: #2a2a2a;
+}
+
+.contenido{
+	width: 100%;
+	background: #f2f2f2;
+	position: absolute;	
+} 
+
+.menu-bar{
+	width: 2rem;	
+	cursor: pointer;
+	margin-top: 30px;
+	margin-left: 30px;
+}
+
+.Pcontenido{
+	margin-left: 4rem ;
+}
+
+.abrir{	
+	transform:translateX(250px); 
+}
+
+.quitar{
+	margin-right: 250px;
+}
+.dropdown{
+	outline: 1px solid #2a2a2a;
+	transition: all 0.3s;
+}
+.dropdown-menu{
+	background: #333;
+	outline: 1px solid #2a2a2a;
+	transition: all 0.3s;
+}
+.sidebar .dropdown-item:hover{
+	color: white;
+	background: #444;
+	border-left: 10px solid rgb(219, 48, 220);	
+}
+.profile{
+	width: 100%;
+	height: 100%;
+}
+

@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="css/signup.css">
+<div class="signup">
+    <div class="container p-4">
+        <div class="row">
+            <div class="mx-auto col-md-9 col-sm-12 col-xs-12">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h3 style="color: #212121;">Registro</h3>
+                    </div>
+                    <div class="card-body">
+                        <form action="/signup" method="POST" autocomplete="off" onsubmit="return validarAll()">
+                            <fieldset>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Nombre:</span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control" name="primero"
+                                            id="prNom" maxlength="25" placeholder="Primer Nombre"
+                                            required="return true">
+                                        <input type="text" aria-label="Last name" class="form-control" name="segundo"
+                                            id="secNom" maxlength="25" placeholder="Segundo Nombre">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Apellidos:</span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control" name="paterno"
+                                            id="patA" maxlength="30" placeholder="Paterno" required="return true">
+                                        <input type="text" aria-label="Last name" class="form-control" name="materno"
+                                            id="matA" maxlength="30" placeholder="Materno" required="return true">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" name="customRadio" value="Masculino"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1"
+                                            style="color: #212121;">Masculino</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio2" name="customRadio" value="Femenino"
+                                            class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio2"
+                                            style="color: #212121;">Femenino
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" name="edad" placeholder="Edad" aria-describedby="ageHelp"
+                                        class="form-control" maxlength="30" id="idedad" required="return true">
+                                    <small id="ageHelp" class="form-text text-muted">La edad minima es de 18 años y menor
+                                        de 50 años.</small>
+                                </div>
+                                <div class="form-group">
+
+
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Peso" aria-label="Peso"
+                                            id="idpeso" aria-describedby="basic-addon2" name="peso" maxlength="3"
+                                            required="return true">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">kilogramos</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+
+
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control" placeholder="Estatura"
+                                            aria-label="Estatura" aria-describedby="basic-addon2" name="estatura"
+                                            maxlength="5" id="idheight" required="return true">
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" id="basic-addon2">metros</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" name="nom_usu" placeholder="Usuario" class="form-control "
+                                        maxlength="30" id="nom_usu" required="return true">
+                                    <small id="usuHelp" class="form-text text-muted">El usuario puede contener números y
+                                        letras,
+                                        debe ser mayor de 8 y menor de 20</small>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" name="con_usu" placeholder="Contraseña" class="form-control "
+                                        maxlength="30" id="con_usu" required="return true">
+                                    <small id="conHelp" class="form-text text-muted">La contraseña solo puede contener
+                                        números y
+                                        letras, debe ser mayor de 8 y menor de 20</small>
+                                </div>
+                                <div class="form-group form-check">
+                                    <input type="checkbox" class="form-check-input" id="chequeo1" name="Terminos" value="Aceptado">
+                                    <label class="form-check-label" for="exampleCheck1">Acepto los termimos y condiciones</label>
+                                </div>
+                                <div class="form-group form-check">
+                                    <a href="/terminos">Terminos y Condiciones</a>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-outline-dark btn-block" onclick="return validarAll()">
+                                        Registrame
+                                    </button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/js/signup.js"></script>

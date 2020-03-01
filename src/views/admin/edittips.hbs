@@ -1,0 +1,31 @@
+{{#each tip}}
+<div class="Pcontenido quitar">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+                <div class="card" style="color: #212121;">
+                    <div class="card-body">
+                        <form action="/admin/tips/edit/{{id_con}} " method="post" autocomplete="off">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="Titulo" placeholder="Titulo" id="Titulo"
+                                    autofocus maxlength="40" value="{{tit_con}}" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea name="Descripcion" rows="10" class="form-control"
+                                    placeholder="¿En que consiste el tip?" id="Descripcion" maxlength="250"
+                                    value="{{des_con}}" required>{{des_con}}</textarea>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-outline-info btn-block" onclick="return Tip();"><i
+                                        class="far fa-save"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
+<link rel="stylesheet" href="/css/edittips.css">
+<script src="/js/tipsval.js"></script>

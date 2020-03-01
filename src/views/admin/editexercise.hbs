@@ -1,0 +1,28 @@
+<div class="container p-4">
+    {{!-- <script src="/js/tipsval.js"></script> --}}
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="color: #212121;">
+                <div class="card-body">
+                    {{#each exercise}}
+                    <form action="/admin/exercise/edit/{{id_eje}}" method="post" autocomplete="off">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Titulo" id="Titulo"
+                                placeholder="Nombre del ejercicio" autofocus maxlength="20" required="return true" value="{{nom_eje}}">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="Descripcion" id="Descripcion" rows="10" class="form-control"
+                                placeholder="¿En que consiste el ejercicio?" maxlength="1000"
+                                required="return true"> {{des_eje}} </textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info btn-block" onclick="{{!-- return Tip() --}}"><i
+                                    class="far fa-save"></i></button>
+                        </div>
+                    </form>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

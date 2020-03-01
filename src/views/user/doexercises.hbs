@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="/css/doexercises.css">
+<div class="Pcontenido quitar">
+  <div class="mx-auto">
+    <h1>Ejercicios Personalizados</h1>
+    <div class="container">
+      {{#each personalizado}}
+    <div class="card" style="width: 18rem;">
+      <img src="{{img_eje}}" class="card-img-top">
+      <div class="card-body">
+        <h5 class="card-title">{{nom_eje}}</h5>
+        <p class="card-text"> {{des_eje}} </p>
+      </div>
+    </div>
+    {{/each}}
+    </div>
+  </div>
+</div>

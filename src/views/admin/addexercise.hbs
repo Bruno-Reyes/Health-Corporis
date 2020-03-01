@@ -1,0 +1,35 @@
+<div class="container p-4">
+    {{!-- <script src="/js/tipsval.js"></script> --}}
+    <div class="row">
+        <div class="col-md-4 mx-auto">
+            <div class="card" style="color: #212121;">
+                <div class="card-body">
+                    <form action="/admin/exercise/add" method="post" autocomplete="off">
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="Titulo" id="Titulo"
+                                placeholder="Nombre del ejercicio" autofocus maxlength="20" required="return true">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="Descripcion" id="Descripcion" rows="10" class="form-control"
+                                placeholder="¿En que consiste el ejercicio?" maxlength="1000"
+                                required="return true"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <select name="Intensidad">
+                                <option value="0">¿Intensidad?</option>
+                                <option value="2">Baja (50%-69%)</option>
+                                <option value="1">Media (70%-79%)</option>
+                                <option value="3">Alta (80%-100%)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info btn-block" onclick="{{!-- return Tip() --}}"><i
+                                    class="far fa-save"></i></button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

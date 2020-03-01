@@ -1,0 +1,27 @@
+<link rel="stylesheet" href="/css/listexercises.css">
+<div class="Pcontenido quitar">
+    <div class="container p-4">
+    <div class="mx-auto">
+        <div class="container">
+            <h1>Ejercicios</h1>
+        </div>
+        <div class="ejercicios">
+            {{#each exercises}}
+        
+            <div class="card" style="width: 18rem;">
+                <img src="{{img_eje}}" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title">{{nom_eje}}</h5>
+                    <p class="card-text"> {{des_eje}} </p>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <a class="btn btn-danger" href="/admin/exercises/delete/{{id_eje}}">Eliminar</a>
+                        <a class="btn btn-warning" href="/admin/exercise/edit/{{id_eje}}">Editar</a>
+                    </div>
+                </div>
+            </div>
+        
+        {{/each}}
+        </div>
+    </div>
+</div>
+</div>

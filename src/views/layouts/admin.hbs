@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="/img/honeypot_blanco_solo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/validator.min.js"></script>
+    {{!-- <script src="https://kit.fontawesome.com/550c04f13c.js"></script> --}}
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    {{!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>        --}}
+    <script src="/js/Chart.min.js"></script>
+    <link rel="stylesheet" href="/css/sidebar.css">
+    <title>Health-Corporis</title>
+</head>
+
+<body>
+
+    {{> nav-admin}}
+
+    <noscript>
+        <h1>¡Este servicio no funcionara correctamente sin JAVASCRIPT por favor activalo!</h1>
+    </noscript>
+
+    <div class="contenido abrir">
+        <div class="fondo">
+            <img src="/img/menuicono.png" alt="" class="menu-bar sticky-top">
+            {{> flash}}
+            {{{body}}}
+        </div>
+    </div>
+    {{!--Modal para agregar un alimento--}}
+    <div class="modal fade" style="color: #212121;" id="exampleModal" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Agregando Algún Alimento</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="/admin/food/add" method="post" autocomplete="off">
+                        <div class="form-group">
+                            <label for="">Nombre del alimento</label>
+                            <input type="text" class="form-control" name="Alimento" placeholder="Debe ser delicioso"
+                                id="food" required>
+                            <small id="nameHelp" class="form-text text-muted">el nombre debe ser mayor de 3 y menor de
+                                50.</small>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect01">Grupo Alimenticio</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01" name="GrupoAlimenticio">
+                                    <option selected>Elige...</option>
+                                    <option value="1">Fruta</option>
+                                    <option value="2">Verdura</option>
+                                    <option value="3">Leche y Sustitutos</option>
+                                    <option value="4">Colación</option>
+                                    <option value="5">Origen Animal</option>
+                                    <option value="6">Leguminosa</option>
+                                    <option value="7">Grasa</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <label class="input-group-text" for="inputGroupSelect02">Unidad de Medida</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect02" name="UnidadMedida">
+                                    <option selected>Elige...</option>
+                                    <option value="1">Cucharada(s)</option>
+                                    <option value="2">Cucharaditas(s)</option>
+                                    <option value="3">Lata(s)</option>
+                                    <option value="4">Bolsa(s)</option>
+                                    <option value="5">Pieza(s)</option>
+                                    <option value="6">Taza(s)</option>
+                                    <option value="7">Gramo(s)</option>
+                                    <option value="8">Rebanada(s)</option>
+                                    <option value="9">Disparo(s)</option>
+                                    <option value="10">-</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-outline-info btn-block" id="sendHelp" onclick="return val();">
+                                <i class="far fa-save"></i></button>
+                            <small id="sendHelp" class="form-text text-muted">recuerda que no puede haber ningun campo
+                                vacío
+                            </small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{!-- <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS --> --}}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="/js/sidebar.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/js/foodval.js"></script>
+    <script src="/js/editfoodval.js"></script>
+</body>
+
+</html>

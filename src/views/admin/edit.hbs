@@ -1,0 +1,57 @@
+{{#each food}}
+<div class="container p-4">
+    <div class="row">
+        <div class="mx-auto">
+            <form action="/admin/food/edit/{{id_ali}}" method="post" autocomplete="off">
+                    <div class="form-group">
+                        <label for="">Nombre del alimento</label>
+                        <input type="text" class="form-control" name="Alimento" id="food" value="{{nda_ali}}" placeholder="Debe ser delicioso" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">Grupo Alimenticio</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect01" name="GrupoAlimenticio">
+                                <option value="{{nga_gal}}" selected>{{nga_gal}}</option>
+                                <option value="Fruta">Fruta</option>
+                                <option value="Verdura">Verdura</option>
+                                <option value="Leche y Sustitutos">Leche y Sustitutos</option>
+                                <option value="Colacion">Colación</option>
+                                <option value="Origen Animal">Origen Animal</option>
+                                <option value="Leguminosa">Leguminosa</option>
+                                <option value="Grasa">Grasa</option>
+                                <option value="cereal">Cereal</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect02">Unidad de Medida</label>
+                            </div>
+                            <select class="custom-select" id="inputGroupSelect02" name="UnidadMedida">
+                                <option value="{{num_udm}}" selected>{{num_udm}}</option>
+                                <option value="Cucharada(s)">Cucharada(s)</option>
+                                <option value="Cucharadita(s)">Cucharadita(s)</option>
+                                <option value="Lata(s)">Lata(s)</option>
+                                <option value="Bolsa(s)">Bolsa(s)</option>
+                                <option value="Pieza(s)">Pieza(s)</option>
+                                <option value="Taza(s)">Taza(s)</option>
+                                <option value="Gramo(s)">Gramo(s)</option>
+                                <option value="Rebanada(s)">Rebanada(s)</option>
+                                <option value="-">-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-outline-info btn-block" onclick="return comida();"><i class="far fa-save"></i></button>
+                    </div>
+                </form>
+                <div class="btn-group-vertical" role="group" aria-label="Button group with nested dropdown">
+                <a href="/admin/food"><i class="fas fa-backward"></i> Regresar</a>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}

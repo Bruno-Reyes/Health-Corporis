@@ -1,0 +1,28 @@
+body{
+    overflow-x: hidden;
+}
+
+.tips{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 1rem;
+    grid-template-rows: minmax(8rem,auto);
+}
+
+.tips .card:hover{
+    border: 2px solid #ecae14;
+}
+
+/* .card{
+    margin-top: 1rem;
+    margin-left:1rem ;
+    margin-left: 1rem;
+    margin-right: 1rem;
+} */
+
+/* .fondo{
+    background: url(../img/tips.png)repeat 90% 50%;
+    background-size: 30%;    
+    width: 100vw;
+    height: 100vh;    
+} */

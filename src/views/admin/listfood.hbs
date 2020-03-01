@@ -1,0 +1,40 @@
+<div class="Pcontenido quitar">
+    <div class="container p-4 ">
+        <div class="row">
+            <div class="btn-group">
+                <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fas fa-plus"></i>Agregar Alimento
+                </button>
+                <a href="/profile"><i class="fas fa-backward"></i>Regresar</a>
+            </div>
+            <div class="col col-lg-10 col-md-10 col-sm-12 col-xs-12">
+                <table class="table" style="color:black;">
+                    <thead class="thead-light">
+                        <tr>
+                            <th scope="col">Grupo</th>
+                            <th scope="col">Alimento</th>
+                            <th scope="col">Medida</th>
+                            <th scope="col">#</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each listfood}}
+                        <tr>
+                            <td> {{nga_gal}} </td>
+                            <td> {{nda_ali}} </td>
+                            <td> {{num_udm}} </td>
+                            <td>
+
+                                <a href="/admin/food/edit/{{id_ali}}"><i class="far fa-edit"></i></a>
+                                <a href="/admin/food/delete/{{id_ali}}"><i class="fas fa-eraser"></i></a>
+                            </td>
+                            {{else}}
+                            <td colspan="4"> Aún no exiten alimentos registrados </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

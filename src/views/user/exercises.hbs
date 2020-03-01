@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="/css/profileusu.css">
+<div class="Pcontenido quitar">
+    <div class="col-lg-5 col-md-10 col-sm-12 col-xs-12 mx-auto">
+        <div class="card text-center" style="color:#1e1e1e;">
+            <div class="card-header">
+                <h1> Ejercicios </h1>
+            </div>
+
+            <div class="card-body">
+                <a href="/user/pdf">¿Como funcioná?</a> <br>
+                <a href="/user/pdffrecuencia">¿Como tomar las pulsaciones por minuto manualmente?</a>
+
+                
+                    <div class="row">
+                        <div class="col">
+                            {{#each intensity}}
+                            <form action="/user/exercises/intensity" method="post" autocomplete="off"
+                                class="form-inline">
+                                <label class="col-sm-8 col-form-label"><strong>Intensidad de ejercicio
+                                        deseada:</strong></label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control card-text" name="Intensity"
+                                        value="{{ren_dep}}" maxlength="3" id="intensidad">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-outline-info" onclick="return inten()"><i class="far fa-save"></i></button>
+                                </div>
+                            </form>
+                            {{/each}}
+                        </div>
+                        <div class="col">
+                            {{#each pm}}
+                            <form action="/user/exercises/pm" method="post" autocomplete="off" class="form-inline">
+                                <label class="col-sm-8 col-form-label"><strong>
+                                        Mi frecuencia cardiaca en reposo es:</strong></label>
+                                <div class="form-group">
+                                    <input type="text" class="form-control card-text" name="Frecuency"
+                                        value="{{fre_rep}}" maxlength="3" id="frecuency">
+                                </div>
+                                <div class="form-group text-center">
+                                    <button class="btn btn-outline-info" onclick="return ejers();"><i class="far fa-save"></i></button>
+                                </div>
+                            </form>
+                            {{/each}}
+                        </div>
+                    </div>
+                
+
+                {{#each age}}
+                <div style="visibility:hidden;" id="age">
+                    {{eda_usu}}
+                </div>
+                {{/each}}
+                
+                <div id="recomendada"> Para lograr trabajar con tu cuerpo la zona de actividad que deseas, debes
+                    mantener una frecuencia cardiaca de: </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/exercises.js"></script>
