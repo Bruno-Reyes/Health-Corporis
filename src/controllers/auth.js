@@ -1,6 +1,6 @@
 const passport = require('./auth');
 const controller = {};
-const pool = require('../database');
+const pool = require('../../database');
 
 controller.signuprender = (req, res) => {
     req.app.locals.layout = 'main';

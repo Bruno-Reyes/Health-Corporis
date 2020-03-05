@@ -6,8 +6,8 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const MYSQLStore = require('express-mysql-session');
 const passport = require('passport');
-const { database } = require('./keys');
-const pool = require('./database');
+const { database } = require('../keys');
+const pool = require('../database');
 
 //Inicializar todo
 
