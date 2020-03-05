@@ -66,7 +66,7 @@ CREATE TABLE Usuario(
     email_usu varchar(50) not null,
     psw_usu varchar(250) not null,
     id_per int not null,
-    id_int tinyint not null,
+    id_int tinyint,
     PRIMARY KEY(id_usu),
     CONSTRAINT FOREIGN KEY(id_per) REFERENCES Persona(id_per),
     CONSTRAINT FOREIGN KEY(id_int) REFERENCES Intensidad(id_int)

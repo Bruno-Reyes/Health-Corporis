@@ -1,0 +1,24 @@
+Crear formulario de registro en base a los siguientes datos
+
+pedir usuario user
+pedir contraseña password
+email como email
+
+
+Ingresar como primer dato en intesidad uno vaxcio
+
+Ingresar como enfermedades
+Ninguna
+Cardiovascular
+Dificultad Motriz
+
+Ingresar frecuencia 
+Nada
+Poco
+Medianamente
+Mucho
+
+Al NOW()
+
+GENERO 1 MASCULINO 
+2 FEMENINO
