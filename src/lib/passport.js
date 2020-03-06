@@ -58,7 +58,8 @@ passport.use('local.signup', new LocalStrategy({
     passwordField: 'password',    
     passReqToCallback: true
 }, async(req,user, password, done) =>{
-
+    console.log(req.body);
+    
     let existentuser = await pool.query('SELECT * FROM Usuario WHERE nom_usu = ?', [user]);
     if(existentuser.length > 0){
         return done(null, false, req.flash('Error','El usuario ya existe'));
@@ -94,7 +95,10 @@ passport.use('local.signup', new LocalStrategy({
     }
 
     let {nombre,apellido,fecha_nacimiento,peso,estatura,email} = req.body
-
+    let fecha = fecha_nacimiento.split('-')
+    let edad = help.age(fecha[1],fecha[0])
+    console.log(edad);
+    
     if(edad.age < 30){
         return done(null, false, req.flash('Error','El sistema no funciona con personas menores de 30 años'));
     }
@@ -102,7 +106,7 @@ passport.use('local.signup', new LocalStrategy({
         return done(null, false, req.flash('Error','La fecha de nacimiento es incorrecta'));
     }
 
-    newPerson.nombre = nombre
+    /*newPerson.nombre = nombre
     newPerson.apellido = apellido
     newPerson.fec_nac = fecha_nacimiento
 
@@ -161,7 +165,7 @@ passport.use('local.signup', new LocalStrategy({
 
     let rs = await pool.query('insert into Usuario set ?', [newUser])
     newUser.id_usu = rs.insertId;
-    return done(null, newUser,  req.flash('Success','Tu registro ha sido exitoso, comienza a disfrutar de nuetro servicio'));
+    return done(null, newUser,  req.flash('Success','Tu registro ha sido exitoso, comienza a disfrutar de nuetro servicio'));*/
 }));
 
 passport.serializeUser((user , done) => {

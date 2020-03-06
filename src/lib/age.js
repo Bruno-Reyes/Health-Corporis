@@ -16,8 +16,10 @@ controller.age = (mes,ano) => {
         age.age = fechaActual[2] - ano
         if(mes > fechaActual[1]){
             age.age = age.age - 1
+            age.real = true
         }
         return age
+        
     }
 }
 
