@@ -16,10 +16,29 @@ controller.age = (mes,ano) => {
         age.age = fechaActual[2] - ano
         if(mes > fechaActual[1]){
             age.age = age.age - 1
+            age.real = true
         }
         return age
+        
     }
 }
 
-module.exports = controller
+controller.frecuencia=(frec)=>{
+    let intervalo='';
+    frec=parseInt(frec)
+    if(frec === 0 ){
+        intervalo='nunca';
+    }else if(frec >=1 && frec<=2){
+        intervalo='raramente';
+    }else if(frec >=3 && frec<=4){
+        intervalo='ocasionalmente';
+    }else if(frec >=5 && frec<=6){
+        intervalo='generalmente';
+    }else if(frec === 7){
+        intervalo='siempre';
+    }
+    return intervalo
+}
+
+module.exports = controller;
 
