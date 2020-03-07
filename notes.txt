@@ -5,12 +5,12 @@ pedir contraseña password
 email como email
 
 
-Ingresar como primer dato en intesidad uno vaxcio
+Ingresar como primer dato en intesidad uno vacio
 
 Ingresar como enfermedades
 Ninguna
 Cardiovascular
-Dificultad Motriz
+Discapacidad Motriz
 
 Ingresar frecuencia 
 Nada
