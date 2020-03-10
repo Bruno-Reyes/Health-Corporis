@@ -85,3 +85,5 @@ CREATE TABLE Ejercicio(
     CONSTRAINT FOREIGN KEY(id_int) REFERENCES Intensidad(id_int),
     CONSTRAINT FOREIGN KEY(id_med) REFERENCES Medicion(id_med)
 );
+
+insert into FrecuenciaEjercicio (fre_eje) values('Nunca'),('Raramente'),('Ocasionalmente'),('Generalmente'),('Siempre');

@@ -24,18 +24,18 @@ controller.age = (mes,ano) => {
 }
 
 controller.frecuencia=(frec)=>{
-    let intervalo='';
+    let intervalo;
     frec=parseInt(frec)
     if(frec === 0 ){
-        intervalo='nunca';
+        intervalo=1;//nunca
     }else if(frec >=1 && frec<=2){
-        intervalo='raramente';
+        intervalo=2;//raramente
     }else if(frec >=3 && frec<=4){
-        intervalo='ocasionalmente';
+        intervalo=3;//ocasionalmente
     }else if(frec >=5 && frec<=6){
-        intervalo='generalmente';
+        intervalo=4;//generalmente
     }else if(frec === 7){
-        intervalo='siempre';
+        intervalo=5;//siempre
     }
     return intervalo
 }
