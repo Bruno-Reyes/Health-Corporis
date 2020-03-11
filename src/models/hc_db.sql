@@ -87,3 +87,6 @@ CREATE TABLE Ejercicio(
 );
 
 insert into FrecuenciaEjercicio (fre_eje) values('Nunca'),('Raramente'),('Ocasionalmente'),('Generalmente'),('Siempre');
+insert into Genero (nom_gen) values('Masculino'),('Femenino');
+insert into Enfermedades(tip_enf) values('Ninguna'),('Cardiovascular'),('Discapacidad Motriz');
+insert into Intensidad(intensidad) values('Sin registro'),('Quemagrasa'),('Cardio'),('Alto Rendimiento');

@@ -65,7 +65,7 @@ passport.use('local.signup', new LocalStrategy({
         return done(null, false, req.flash('Error','El usuario ya existe'));
     }
     //Aquì se comienzan a ingresar los datos para registrar al usuario
-
+    
     //Primero se crean todos los objetos para despuès rellenar.
     const newUser = {
         nom_usu : '',
@@ -97,7 +97,7 @@ passport.use('local.signup', new LocalStrategy({
     let {nombre,apellido,fecha_nacimiento,peso,estatura,email} = req.body
     let fecha = fecha_nacimiento.split('-')
     let edad = help.age(fecha[1],fecha[0])
-    console.log(edad);
+    
     
     if(edad.age < 30){
         return done(null, false, req.flash('Error','El sistema no funciona con personas menores de 30 años'));
@@ -106,67 +106,68 @@ passport.use('local.signup', new LocalStrategy({
         return done(null, false, req.flash('Error','La fecha de nacimiento es incorrecta'));
     }
 
-    /*newPerson.nombre = nombre
+    newPerson.nombre = nombre
     newPerson.apellido = apellido
     newPerson.fec_nac = fecha_nacimiento
-
-    if(req.body.Genero == null){
+    
+    
+    if(req.body.Genero == undefined){
         return done(null, false, req.flash('Error','No se selecciono el genero'));
     }
+    
+    
     if(req.body.Genero == "Masculino"){
         newPerson.id_gen = 1;
     }else if(req.body.Genero == "Femenino"){
         newPerson.id_gen = 2;
     }
-
-    if(req.body.Frecuencia == null){
-        return done(null, false, req.flash('Error','No se selecciono la frecuencia de ejercicios'));
-    }
-    if(req.body.Frecuencia == "Nada"){
-        newPerson.id_fre = 1;
-    }else if(req.body.Frecuencia == "Poco"){
-        newPerson.id_fre = 2;
-    }else if(req.body.Frecuencia == "Medianamente"){
-        newPerson.id_fre = 3;
-    }else if(req.body.Frecuencia == "Mucho"){
-        newPerson.id_fre = 4;
-    }
-
-    if(req.body.Enfermedad == null){
+     
+    let frecuencia = help.frecuencia(req.body.Frecuencia)
+    newPerson.id_fre = frecuencia
+    
+    if(req.body.Enfermedad == undefined){
         return done(null, false, req.flash('Error','No se especifico si sufre alguna enfermedad'));
     }
     if(req.body.Enfermedad == "Ninguna"){
         newPerson.id_enf = 1;
     }else if(req.body.Enfermedad == "Cardiovascular"){
         newPerson.id_enf = 2;
-    }else if(req.body.Enfermedad == "Dificultad Motriz"){
+    }else if(req.body.Enfermedad == "Discapacidad Motriz"){
         newPerson.id_enf = 3;
     }
-
-
+    
+    
+    
     let persona = await pool.query('insert into Persona set ?', [newPerson]);
+    
     newSeguimiento.id_per = persona.insertId
     newUser.id_per = persona.insertId
 
-    peso = parseFloat(peso)
-    estatura = parseFloat(estatura)
-    let imc = peso / (estatura*estatura)
-    let simc = imc.toString().substring(0,5);
 
     newSeguimiento.peso = peso
     newSeguimiento.est_seg = estatura
+    peso = parseFloat(peso)
+    estatura = parseFloat(estatura)
+    estatura = estatura/100
+    let imc = peso / (estatura*estatura)
+    let simc = imc.toString().substring(0,5);
+
+
     newSeguimiento.imc_seg = simc
-
+    
+    
     await pool.query('INSERT INTO Seguimiento (peso,est_seg,imc_seg,fec_reg,id_per) values(?,?,?,NOW(),?)', [newSeguimiento.peso,newSeguimiento.est_seg,newSeguimiento.imc_seg,newSeguimiento.id_per])
-
+    
     newUser.nom_usu = user
     newUser.email_usu = email
     newUser.psw_usu = await helpers.encrypt(password)
-
+    console.log(newUser)
     let rs = await pool.query('insert into Usuario set ?', [newUser])
+    
     newUser.id_usu = rs.insertId;
-    return done(null, newUser,  req.flash('Success','Tu registro ha sido exitoso, comienza a disfrutar de nuetro servicio'));*/
-}));
+    /*
+    return done(null, newUser,  req.flash('Success','Tu registro ha sido exitoso, comienza a disfrutar de nuetro servicio'))*/
+}))
 
 passport.serializeUser((user , done) => {
     done(null, user.id_usu);

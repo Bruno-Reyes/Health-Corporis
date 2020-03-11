@@ -16,14 +16,14 @@ controller.age = (mes,ano) => {
         age.age = fechaActual[2] - ano
         if(mes > fechaActual[1]){
             age.age = age.age - 1
-            age.real = true
         }
+        age.real = true
         return age
         
     }
 }
 
-controller.frecuencia=(frec)=>{
+controller.frecuencia= frec => {
     let intervalo;
     frec=parseInt(frec)
     if(frec === 0 ){
