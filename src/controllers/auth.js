@@ -25,7 +25,6 @@ controller.profile = async (req, res) => {
 
     req.app.locals.layout = 'user';
         res.render('profile');
-
 }
 
 controller.logout = (req, res) => {

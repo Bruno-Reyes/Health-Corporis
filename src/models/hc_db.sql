@@ -29,7 +29,7 @@ CREATE TABLE Medicion(
 
 CREATE TABLE Intensidad(
     id_int tinyint not null auto_increment,
-    intensidad varchar(10) not null,
+    intensidad varchar(20) not null,
     primary key(id_int)
 );
 

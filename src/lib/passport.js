@@ -11,7 +11,8 @@ passport.use('local.login', new LocalStrategy({
     passReqToCallback: true
 }, async(req,user, password, done) => {
     let pass1 = password;
-    console.log(`Usuario: ${nom_usu} \n\r Contraseña: ${con_usu}`)
+    console.log(`Usuario: ${user} \n\r Contraseña: ${password}`)
+    
     let rows1 = await pool.query('SELECT * FROM Usuario WHERE nom_usu = ?', [user]);
     let exists = false;
     let data;
@@ -31,7 +32,7 @@ passport.use('local.login', new LocalStrategy({
         let valid = false;
     
         if(user!="Administrador"){
-            let pass2 = await helpers.decrypt(data.con_usu)
+            let pass2 = await helpers.decrypt(data.psw_usu)
             if(pass1===pass2){
                 valid = true;
             }
@@ -50,6 +51,7 @@ passport.use('local.login', new LocalStrategy({
     }else{
         return done(null, false, req.flash('Error','Usuario Inexistente'));
     }
+    
 }));
 
 
@@ -165,8 +167,8 @@ passport.use('local.signup', new LocalStrategy({
     let rs = await pool.query('insert into Usuario set ?', [newUser])
     
     newUser.id_usu = rs.insertId;
-    /*
-    return done(null, newUser,  req.flash('Success','Tu registro ha sido exitoso, comienza a disfrutar de nuetro servicio'))*/
+    
+    return done(null, newUser,  req.flash('Success','Tu registro ha sido exitoso, comienza a disfrutar de nuetro servicio'))
 }))
 
 passport.serializeUser((user , done) => {
