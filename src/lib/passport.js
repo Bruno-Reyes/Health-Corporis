@@ -176,6 +176,9 @@ passport.serializeUser((user , done) => {
 });
 
 passport.deserializeUser(async (id , done) => {
-    const row = await pool.query('SELECT * FROM usuario WHERE id_usu = ?', [id]);
+    const row = await pool.query('SELECT * FROM usuario natural join persona natural join genero WHERE id_usu = ?', [id]);
+    if(row[0].nom_gen==="Femenino"){
+        delete row[0].nom_gen
+    }
     done(null, row[0]);
 });
