@@ -1,0 +1,29 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+            ['Year', 'Ideal', 'Seguimiento'],
+            ['2020/03/14', 1000, 400],
+            ['2020/03/29', 1170, 460],
+            ['2020/04/15', 660, 1120],
+            ['2020/04/30', 1030, 540]
+        ]);
+
+        var options = {
+            title: 'Tu seguimiento',
+            curveType: 'function',
+            legend: { position: 'bottom' }
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+        chart.draw(data, options);
+    }
+</script>
+</style>
+<div class="container">
+    <div id="curve_chart" style="width: 1000px; height: 500px"></div>
+</div>

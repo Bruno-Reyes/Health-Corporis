@@ -9,4 +9,9 @@ router.get('/',isNotLoggedIn, (req, res) => {
     res.render('index.hbs');
 });
 
+router.get('/tips', isNotLoggedIn, async (req, res) => {    
+    req.app.locals.layout= 'main';
+    res.render('tips');
+});
+
 module.exports = router

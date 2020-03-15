@@ -55,10 +55,11 @@ app.use((req, res, next) => {
 
 app.use(require('./routes/index'));
 app.use(require('./routes/autenticacion'));
+app.use('/user',require('./routes/user'));
 /*
-app.use('/user',require('./routes/cruduser'));
 app.use('/admin',require('./routes/admin'));
-app.use('/api',require('./routes/api_rest'));*/
+app.use('/api',require('./routes/api_rest'));
+*/
 
 
 //Archivos estáticos

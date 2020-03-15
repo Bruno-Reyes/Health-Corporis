@@ -1,20 +1,18 @@
 {{#if Error}}
-<ul class="collection">
+<ul class="collection s12 m4 l4">
     <li class="collection-item avatar">
-        <i class="material-icons circle green">insert_chart</i>
-        <span class="title">Error</span>
-        <p>{{Error}}</p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        <i class="material-icons circle red">error</i>
+        <a href="" class="close">Error<i class="material-icons right">close</i></a>
+        <p>{{Error}}</p>        
     </li>
 </ul>
 {{/if}}
 {{#if Exito}}
 <ul class="collection">
     <li class="collection-item avatar">
-        <i class="material-icons circle green">insert_chart</i>
-        <span class="title">Exito</span>
-        <p>{{Exito}}</p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+        <i class="material-icons circle green">done</i>
+        <a href="" class="close">Exito<i class="material-icons right">close</i></a>
+        <p>{{Exito}}</p>        
     </li>
 </ul>
 {{/if}}

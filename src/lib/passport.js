@@ -112,11 +112,10 @@ passport.use('local.signup', new LocalStrategy({
     newPerson.apellido = apellido
     newPerson.fec_nac = fecha_nacimiento
     
-    
-    if(req.body.Genero == undefined){
+
+    if(req.body.Genero == undefined){        
         return done(null, false, req.flash('Error','No se selecciono el genero'));
     }
-    
     
     if(req.body.Genero == "Masculino"){
         newPerson.id_gen = 1;
@@ -128,7 +127,7 @@ passport.use('local.signup', new LocalStrategy({
     newPerson.id_fre = frecuencia
     
     if(req.body.Enfermedad == undefined){
-        return done(null, false, req.flash('Error','No se especifico si sufre alguna enfermedad'));
+        return done(null, false, req.flash('Error','No se especifico si padece de alguna enfermedad'));
     }
     if(req.body.Enfermedad == "Ninguna"){
         newPerson.id_enf = 1;

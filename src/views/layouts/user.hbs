@@ -14,7 +14,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
   <link rel="stylesheet" href="/css/styles.css">
   <script src="/js/validator.min.js"></script>
+
   <title>Health-Corporis</title>
+  
   <script src="/js/materialize.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
@@ -27,13 +29,15 @@
 <body
   class="vertical-layout vertical-menu-collapsible page-header-dark vertical-modern-menu 1-column login-bg blank-page blank-page"
   data-open="click" data-menu="vertical-modern-menu" data-col="1-column">
-  {{> nav-user}}
-  {{> flash}}
-  {{> sidenav-user}}
+
   <noscript>
     <h1>¡Este servicio no funcionara correctamente sin JAVASCRIPT por favor activalo!</h1>
   </noscript>
 
+  {{> nav-user}}
+  {{> flash}}
+  {{> sidenav-user}}
+  <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons" style="font-size: 36px;">menu</i></a>
   {{{body}}}
 
   <script>
@@ -42,10 +46,5 @@
       var instances = M.Sidenav.init(elems);
     });
   </script>
-
-  {{!-- <script src="/js/loginval.js"></script>
-  <script src="/js/validateSignUp.js"></script> --}}
-
 </body>
-
 </html>
