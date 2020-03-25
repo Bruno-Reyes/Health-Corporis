@@ -33,6 +33,12 @@ CREATE TABLE Intensidad(
     primary key(id_int)
 );
 
+CREATE TABLE TipoUsuario(
+    id_tdu tinyint not null auto_increment,
+    nom_tdu varchar(20) not null,
+    primary key (id_tdu)
+);
+
 CREATE TABLE Persona(
     id_per int not null auto_increment,
     nombre varchar(20) not null,
@@ -63,13 +69,15 @@ CREATE TABLE Seguimiento(
 CREATE TABLE Usuario(
     id_usu int not null auto_increment,
     nom_usu varchar(25) not null,
-    email_usu varchar(50) not null,
+    email_usu varchar(50) ,/*not null*/
     psw_usu varchar(250) not null,
-    id_per int not null,
+    id_per int ,/*not null*/
     id_int tinyint,
+    id_tdu tinyint not null,
     PRIMARY KEY(id_usu),
     CONSTRAINT FOREIGN KEY(id_per) REFERENCES Persona(id_per),
-    CONSTRAINT FOREIGN KEY(id_int) REFERENCES Intensidad(id_int)
+    CONSTRAINT FOREIGN KEY(id_int) REFERENCES Intensidad(id_int),
+    CONSTRAINT FOREIGN KEY(id_tdu) REFERENCES TipoUsuario(id_tdu)
 );
 
 CREATE TABLE Ejercicio(
@@ -88,5 +96,7 @@ CREATE TABLE Ejercicio(
 
 insert into FrecuenciaEjercicio (fre_eje) values('Nunca'),('Raramente'),('Ocasionalmente'),('Generalmente'),('Siempre');
 insert into Genero (nom_gen) values('Masculino'),('Femenino');
-insert into Enfermedades(tip_enf) values('Ninguna'),('Cardiovascular'),('Discapacidad Motriz');
-insert into Intensidad(intensidad) values('Sin registro'),('Quemagrasa'),('Cardio'),('Alto Rendimiento');
+insert into Enfermedades (tip_enf) values('Ninguna'),('Cardiovascular'),('Discapacidad Motriz');
+insert into Intensidad (intensidad) values('Sin registro'),('Quemagrasa'),('Cardio'),('Alto Rendimiento');
+insert into TipoUsuario (nom_tdu) values ('Administrador'),('Usuario');
+insert into Usuario (nom_usu,psw_usu,id_tdu) values ('Administrador','9631f3b6914acfcaf21e9804d3',1);

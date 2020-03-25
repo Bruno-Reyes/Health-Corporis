@@ -1,40 +1,74 @@
-<link rel="stylesheet" href="/css/index.css">
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var elems = document.querySelectorAll('.parallax');
+        var instances = M.Parallax.init(elems);
+    });
+</script>
 <div class="parallax-container">
-    <div class="parallax img1"></div>
+    <div class="parallax">
+        <img src="/img/parallax3.jpg">
+    </div>
 </div>
 <div class="section white">
     <div class="row container">
-        <h2 class="header">Parallax</h2>
-        <p class="grey-text text-darken-3 lighten-3">Parallax is an effect where the background content or image in this
-            case, is moved at a different speed than the foreground content while scrolling.</p>
+        <h2 class="header">¿Quienes somos?</h2>
+        <p class="grey-text text-darken-3 lighten-3 ">
+            <h5 class="flow-text" style="text-align: justify;">
+                <p style="text-align: center;">HoneyPot es una empresa mexicana dedicada al cuidado de la salud mediante el uso de software.<br></p>
+                En México, el 70% de los mexicanos padece sobrepeso y casi una tercera parte sufre de obesidad, además, 
+                esta enfermedad se asocia principalmente con la diabetes y enfermedades cardiovasculares, pero también con 
+                trastornos óseos y musculares y algunos tipos de cáncer.
+                Nosotros nos interesamos en la salud de los mexicanos por lo que creamos este software gratuito para que todas aquellas personas que 
+                no dispongan del tiempo necesario para ir a un gym puedan realizar actividad física en la comodidad de su casa generando habitos saludables, con el fin de reducir 
+                el índeice de obecidad en México. 
+            </h5>
+        </p>
     </div>
 </div>
 <div class="parallax-container">
-    <div class="parallax img2"></div>
+    <div class="parallax">
+        <img src="/img/parallax4.jpg">
+    </div>
 </div>
-<footer class="page-footer">
+<div class="row section white">
+    <div class="col container s10">
+        <h2 class="header">¿Cómo  funciona?</h2>
+        <p class="grey-text text-darken-3 lighten-3 ">
+            <h5 class="flow-text" style="text-align: justify;">                
+                Nuestro software funciona principalmete con el índice de masa corporal(IMC) y una aplicacion movil 
+                con la que podemos medir tu frecuencia cardiaca en reposo y frecuencia máxima con el fin de poder ofrecerte una lista de ejercicios             
+                de acuerdo a tu condición fisca, los cuales podrás hacer facilmente en tu casa.
+            </h5>
+        </p>
+    </div>
+    <div class="col s2">
+        <img src="/img/apppmovil.jpg">{{!-- Aqu iva una imagen de la aplicaion movil --}}
+    </div>
+</div>
+<footer class="page-footer grey darken-4">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
-                <h5 class="white-text">Footer Content</h5>
-                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.
-                </p>
+                <h5 class="white-text">Información de la empresa</h5>
+                <p class="grey-text text-lighten-4">Dirección: Mar Mediterráneo 227, Popotla, 11400 Ciudad de México,
+                    CDMX</p>
+                <p class="grey-text text-lighten-4">Teléfono: 55-68-91-46-80</p>
             </div>
             <div class="col l4 offset-l2 s12">
-                <h5 class="white-text">Links</h5>
+                <h5 class="white-text">Siguenos en nuestras redes</h5>
                 <ul>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Descarga nuestra aplicación movil</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Facebook</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Twitter</a></li>
+                    <li><a class="grey-text text-lighten-3" href="#!">Youtube</a></li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="footer-copyright">
         <div class="container">
-            © 2020Copyright Text
-            <a class="grey-text text-lighten-4 right" href="/">More Links</a>
+            © 2020Health-Corporis
+            <a class="grey-text text-lighten-4 right" href="/"></a>
         </div>
     </div>
 </footer>

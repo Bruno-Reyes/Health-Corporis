@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <h4>Agregar consejo</h4>
+        <div class="col s12">
+            <form action="/addTip" method="post">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Titulo" id="title" name="title" type="text">
+                        <label for="title">Titulo del consejo</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                        <label for="description">Descrpción del consejo</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <button type="submit" class="btn">Agregar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -4,7 +4,6 @@ const passport = require('passport');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 let controller = require('../controllers/auth');
 
-
 router.get('/signup', isNotLoggedIn, controller.signuprender);
 router.get('/login',isNotLoggedIn, controller.loginrender);
 
