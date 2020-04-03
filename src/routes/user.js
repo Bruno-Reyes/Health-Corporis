@@ -16,6 +16,33 @@ router.get('/seguimiento', isLoggedIn, (req, res) => {
     res.render('user/seguimiento.hbs');
 })
 
+router.post('/registroSeguimiento' ,isLoggedIn, async (req,res) => {
+    let data = req.body
+    
+    let response = {}
+    /* Aqui van validarse los datos  */
+    let id_per = await pool.query('SELECT id_per FROM Usuario WHERE id_usu = ?',[req.user.id_usu])
+    await pool.query('INSERT INTO seguimiento(peso,est_seg,imc_seg,fec_reg,id_per) values(?,?,?,NOW(),?)', [data.peso,data.estatura,data.imc,id_per[0].id_per])
+    response.message = 'Tenemos tus datos vuelve en 15 y 20 dias'
+    res.json(response)
+})
+
+router.get('/dataChart', isLoggedIn , async (req,res) =>{
+    let data = await pool.query('SELECT imc_seg,fec_reg FROM usuario natural join persona natural join seguimiento where id_usu = ?',[req.user.id_usu])
+    let dataInformat = []
+    for (let index = 0; index < data.length; index++) {
+        dataInformat[index] = []
+        dataInformat[index][0] = data[index].fec_reg
+        dataInformat[index][1] = parseFloat(data[index].imc_seg)
+    }
+    res.json(dataInformat)
+})
+
+router.get('/dataTable', isLoggedIn, async (req,res) => {
+    let data = await pool.query('SELECT peso,est_seg,imc_seg,fec_reg FROM usuario natural join persona natural join seguimiento where id_usu = ?',[req.user.id_usu])
+    res.json(data)
+})
+
 router.get('/frecuencia', isLoggedIn, (req, res) => {
     req.app.locals.layouts = "user";
     res.render('user/frecuencia.hbs');

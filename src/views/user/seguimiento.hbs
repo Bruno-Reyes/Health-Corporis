@@ -1,29 +1,41 @@
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(drawChart);
+<script src="/js/seguimiento.js"></script>
+<link rel="stylesheet" href="/css/seguimiento.css">
 
-    function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-            ['Year', 'Ideal', 'Seguimiento'],
-            ['2020/03/14', 1000, 400],
-            ['2020/03/29', 1170, 460],
-            ['2020/04/15', 660, 1120],
-            ['2020/04/30', 1030, 540]
-        ]);
 
-        var options = {
-            title: 'Tu seguimiento',
-            curveType: 'function',
-            legend: { position: 'bottom' }
-        };
+<div class="contenedor">
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid" id="Agregar">
+        <a class="waves-effect waves-light btn btn-floating btn-large red modal-trigger secondary-content"
+            href="#seguimiento"><i class="material-icons">add</i></a>
 
-        var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    </div>
+    <div class="grid"></div>
+    <div class="grid" id="chart_div"></div>
+    <div class="grid"></div>
+    <div class="grid"></div>
+    <div class="grid" id="datatable"></div>
+    <div class="grid"></div>
+</div>
 
-        chart.draw(data, options);
-    }
-</script>
-</style>
-<div class="container">
-    <div id="curve_chart" style="width: 1000px; height: 500px"></div>
+
+{{!-- Modals --}}
+<div id="seguimiento" class="modal">
+    <div class="modal-content">
+        <h4>¿Cuál ha sido tu avanze?</h4>
+        <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">fitness_center</i>
+            <input id="peso" type="text" name="peso">
+            <label for="peso">Peso (kg)</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">assignment</i>
+            <input id="estatura" type="text" name="estatura">
+            <label for="estatura">Estatura (cm)</label>
+        </div>
+        <div><button onClick="registrarSeguimiento()"
+                class="modal-close waves-effect waves-green btn-flat btn">¡Listo!</button>
+        </div>
+    </div>
 </div>
