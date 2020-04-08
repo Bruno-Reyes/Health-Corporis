@@ -22,7 +22,7 @@ router.post('/registroSeguimiento', isLoggedIn, async(req, res) => {
     let response = {}
         /* Aqui van validarse los datos  */
     let id_per = await pool.query('SELECT id_per FROM Usuario WHERE id_usu = ?', [req.user.id_usu])
-    await pool.query('INSERT INTO seguimiento(peso,est_seg,imc_seg,fec_reg,id_per) values(?,?,?,NOW(),?)', [data.peso, data.estatura, data.imc, id_per[0].id_per])
+    await pool.query('INSERT INTO Seguimiento(peso,est_seg,imc_seg,fec_reg,id_per) values(?,?,?,NOW(),?)', [data.peso, data.estatura, data.imc, id_per[0].id_per])
     response.message = 'Tenemos tus datos vuelve en 15 y 20 dias'
     res.json(response)
 })

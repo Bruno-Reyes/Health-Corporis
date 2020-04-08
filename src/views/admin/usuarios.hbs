@@ -16,8 +16,8 @@
                 </thead>
 
                 <tbody>
-                    <tr>
-                        {{#each usuarios}}
+                    {{#each usuarios}}
+                    <tr>                        
                         <td>{{nom_usu}}</td>
                         <td>{{email_usu}}</td>
                         <td>{{nombre}}</td>
@@ -25,9 +25,9 @@
                         <td>{{fec_nac}}</td>  
                         <td>{{nom_gen}}</td>
                         <td>{{tip_enf}}</td>
-                        <td>{{fre_eje}}</td>                        
-                        {{/each}}
+                        <td>{{fre_eje}}</td>                                                
                     </tr>
+                    {{/each}}
                 </tbody>
             </table>
         </div>
