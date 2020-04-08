@@ -15,7 +15,7 @@ controller.loginrender = (req, res) => {
 controller.profile = async (req, res) => {
 
     if (req.user.id_tdu == 2) {
-        const datosusuario = await pool.query('select * from usuario natural join persona natural join genero natural join enfermedades natural join seguimiento natural join frecuenciaejercicio where id_usu=?', [req.user.id_usu]);
+        const datosusuario = await pool.query('select * from Usuario natural join Persona natural join Genero natural join Enfermedades natural join Seguimiento natural join FrecuenciaEjercicio where id_usu=?', [req.user.id_usu]);
         req.app.locals.layout = 'user';
         res.render('profile', { datosusuario });
     } else {
