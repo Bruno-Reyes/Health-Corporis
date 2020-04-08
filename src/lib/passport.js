@@ -211,7 +211,7 @@ passport.use('local.signup', new LocalStrategy({
     let punto2 = [];
     punto2 = estatura.toString().split(".");
     if (punto2.length > 1) {
-        if (validator.isFloat(estatura, { min: 1.00, max: 2.50 }) == false) {
+        if (validator.isFloat(estatura, { min: 1.0, max: 2.5 }) == false) {
             return done(null, false, req.flash('Error', 'Los datos númericos de la estatura son equivocados rango 1.00-2.50 metros'));
         }
         if (punto2[1].length > 2) {
