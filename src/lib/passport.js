@@ -179,7 +179,7 @@ passport.deserializeUser(async (id, done) => {
     if(id === 1){
         row = await pool.query('SELECT * FROM Usuario where id_usu = ?', [id])
     }else{
-        row = await pool.query('SELECT * FROM Usuario natural join persona natural join genero WHERE id_usu = ?', [id]);
+        row = await pool.query('SELECT * FROM Usuario natural join Persona natural join Genero WHERE id_usu = ?', [id]);
     }
     
     if(row[0].id_tdu === 2){

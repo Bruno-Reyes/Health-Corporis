@@ -31,7 +31,7 @@ router.get('/graficas',isLoggedIn,async(req,res)=>{
 });
 
 router.get('/usuarios',isLoggedIn,async(req,res)=>{   
-    let usuarios=await pool.query('SELECT * FROM usuario natural join persona natural join genero natural join frecuenciaejercicio natural join enfermedades WHERE id_tdu = 2')    
+    let usuarios=await pool.query('SELECT * FROM Usuario natural join Persona natural join Genero natural join FrecuenciaEjercicio natural join Enfermedades WHERE id_tdu = 2')    
     req.app.locals.layouts = "admin";
     res.render('admin/usuarios.hbs', {usuarios})
 });
