@@ -16,18 +16,18 @@ router.get('/seguimiento', isLoggedIn, (req, res) => {
     res.render('user/seguimiento.hbs');
 })
 
-router.post('/registroSeguimiento', isLoggedIn, async(req, res) => {
+router.post('/registroSeguimiento', isLoggedIn, async (req, res) => {
     let data = req.body
 
     let response = {}
-        /* Aqui van validarse los datos  */
+    /* Aqui van validarse los datos  */
     let id_per = await pool.query('SELECT id_per FROM Usuario WHERE id_usu = ?', [req.user.id_usu])
     await pool.query('INSERT INTO Seguimiento(peso,est_seg,imc_seg,fec_reg,id_per) values(?,?,?,NOW(),?)', [data.peso, data.estatura, data.imc, id_per[0].id_per])
     response.message = 'Tenemos tus datos vuelve en 15 y 20 dias'
     res.json(response)
 })
 
-router.get('/dataChart', isLoggedIn, async(req, res) => {
+router.get('/dataChart', isLoggedIn, async (req, res) => {
     let data = await pool.query('SELECT imc_seg,fec_reg FROM Usuario natural join Persona natural join Seguimiento where id_usu = ?', [req.user.id_usu])
     let dataInformat = []
     for (let index = 0; index < data.length; index++) {
@@ -38,7 +38,7 @@ router.get('/dataChart', isLoggedIn, async(req, res) => {
     res.json(dataInformat)
 })
 
-router.get('/dataTable', isLoggedIn, async(req, res) => {
+router.get('/dataTable', isLoggedIn, async (req, res) => {
     let data = await pool.query('SELECT peso,est_seg,imc_seg,fec_reg FROM Usuario natural join Persona natural join Seguimiento where id_usu = ?', [req.user.id_usu])
     res.json(data)
 })
@@ -48,14 +48,14 @@ router.get('/frecuencia', isLoggedIn, (req, res) => {
     res.render('user/frecuencia.hbs');
 })
 
-router.get('/editprofile', isLoggedIn, async(req, res) => {
-    infoUser = await pool.query('select * from Usuario natural join Persona natural join Genero natural join Enfermedades natural join Seguimiento natural join FrecuenciaEjercicio where id_usu=?', [req.user.id_usu]);
-    req.app.locals.layouts = "user";
-    res.render('user/editProfile.hbs', { infoUser });
+router.get('/editprofile', isLoggedIn, async (req, res) => {
+    infoUser = await pool.query('select * from Usuario natural join Persona natural join Genero natural join Enfermedades natural join FrecuenciaEjercicio where id_usu=?', [req.user.id_usu]);    
+    req.app.locals.layouts = "user";    
+    res.render('user/editProfile.hbs', {infoUser});
 })
 
 //Aqui se van a editar todos los datos del usuario
-router.post('/editNombre', isLoggedIn, async(req, res) => {
+router.post('/editNombre', isLoggedIn, async (req, res) => {
     const { nombre } = req.body
     const id = req.user.id_usu
     await pool.query('update Persona set nombre=? where id_per=?', [nombre, id])
@@ -65,7 +65,7 @@ router.post('/editNombre', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editApellido', isLoggedIn, async(req, res) => {
+router.post('/editApellido', isLoggedIn, async (req, res) => {
     const { apellido } = req.body
     const id = req.user.id_usu
     await pool.query('update Persona set apellido=? where id_per=?', [apellido, id])
@@ -75,7 +75,7 @@ router.post('/editApellido', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editFecha', isLoggedIn, async(req, res) => {
+router.post('/editFecha', isLoggedIn, async (req, res) => {
     const { fecha } = req.body
     const id = req.user.id_usu
     await pool.query('update Persona set fec_nac=? where id_per=?', [fecha, id])
@@ -85,7 +85,7 @@ router.post('/editFecha', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editGenero', isLoggedIn, async(req, res) => {
+router.post('/editGenero', isLoggedIn, async (req, res) => {
     const { genero } = req.body
     const id = req.user.id_usu
     let id_gen
@@ -101,7 +101,7 @@ router.post('/editGenero', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editEnfermedad', isLoggedIn, async(req, res) => {
+router.post('/editEnfermedad', isLoggedIn, async (req, res) => {
     const { enfermedad } = req.body
     const id = req.user.id_usu
     let id_enf
@@ -119,7 +119,7 @@ router.post('/editEnfermedad', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editFrecuencia', isLoggedIn, async(req, res) => {
+router.post('/editFrecuencia', isLoggedIn, async (req, res) => {
     const { frecuencia } = req.body
     const id = req.user.id_usu
     let id_fre
@@ -141,7 +141,7 @@ router.post('/editFrecuencia', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editEmail', isLoggedIn, async(req, res) => {
+router.post('/editEmail', isLoggedIn, async (req, res) => {
     const { email } = req.body
     const id = req.user.id_usu
     await pool.query('update Usuario set email_usu=? where id_per=?', [email, id])
@@ -151,7 +151,7 @@ router.post('/editEmail', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editUsuario', isLoggedIn, async(req, res) => {
+router.post('/editUsuario', isLoggedIn, async (req, res) => {
     const { usuario } = req.body
     const id = req.user.id_usu
     await pool.query('update Usuario set nom_usu=? where id_usu=?', [usuario, id])
@@ -161,7 +161,7 @@ router.post('/editUsuario', isLoggedIn, async(req, res) => {
     })
 })
 
-router.post('/editPassword', isLoggedIn, async(req, res) => {
+router.post('/editPassword', isLoggedIn, async (req, res) => {
     const { oldPassword, newPassword, confirmPassword } = req.body
     const id = req.user.id_usu
     const psw = await pool.query('select psw_usu from Usuario where id_usu=?', [id])

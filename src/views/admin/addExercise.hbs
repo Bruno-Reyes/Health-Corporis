@@ -1,8 +1,55 @@
+<script src="/js/addExercise.js"></script>
 <div class="container">
     <div class="row">
         <h4>Agregar ejercicio</h4>
         <div class="col s12">
-            
+            <form action="/addExercise" method="post">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select name="intensidad">
+                            <option disabled selected>Seleccione una opción</option>
+                            <option value="Quemagrasa">Quemagrasa</option>
+                            <option value="Cardio">Cardio</option>
+                            <option value="Alto Rendimiento">Alto Rendimiento</option>
+                        </select>
+                        <label>Intensidad del ejercicio</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Nombre" id="nomeje" name="nomeje" type="text">
+                        <label for="nomeje">Nombre del ejercicion</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                        <label for="description">Descrpción del ejercicio</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Nombre" id="repeje" name="repeje" type="number" max="100" min="1">
+                        <label for="repeje">Repeticions del ejercicio</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="file-field input-field col s6">
+                        <div class="btn  purple lighten-2">
+                            <span>Imagen del ejercicio</span>
+                            <input type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" name="img" id="img">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <button type="submit" class="btn blue lighten-2">Agregar</button>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 </div>

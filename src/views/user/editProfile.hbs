@@ -1,8 +1,8 @@
 <div class="container">
     <div class="row">
         <div class="col s12">
+            {{#each infoUserP }}
             <ul class="collection">
-                {{#each infoUser}}
                 <li class="collection-item avatar">
                     <i class="material-icons circle light-blue lighten-2">face</i>
                     <span class="title">Nombre:</span>
@@ -60,7 +60,7 @@
                     </p>
                     <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalFrecuencia"><i
                             class="material-icons">edit</i></a>
-                </li>                
+                </li>
                 <li class="collection-item avatar">
                     <i class="material-icons circle  light-green accent-3">mail_outline</i>
                     <span class="title">Correo electrónico:</span>
@@ -81,14 +81,16 @@
                 </li>
                 <li class="collection-item avatar">
                     <i class="material-icons circle  light-green accent-3">lock_open</i>
-                    <span class="title">Contraseña:</span>                    
+                    <span class="title">Contraseña:</span>
                     <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalPsw"><i
                             class="material-icons">edit</i></a>
                 </li>
             </ul>
+            {{/each}}
         </div>
     </div>
 </div>
+{{#each infoUser}}
 <!-- Modal Structure Nombre-->
 <div id="modalNombre" class="modal">
     <div class="modal-content">
@@ -137,7 +139,7 @@
             <form name="Genero">
                 <p>
                     <label>
-                        <input class="with-gap" name="Genero" type="radio" value="Masculino"/>
+                        <input class="with-gap" name="Genero" type="radio" value="Masculino" />
                         <span>Masculino</span>
                     </label>
                 </p>
@@ -171,6 +173,7 @@
         </div>
     </div>
 </div>
+
 <!-- Modal Structure Frecuencia de ejercicio-->
 <div id="modalFrecuencia" class="modal">
     <div class="modal-content">
@@ -222,16 +225,16 @@
         <h4>Editar contraseña</h4>
         <div class="input-field col s12">
             <i class="material-icons prefix pt-2">lock_outline</i>
-            <input id="psw" type="password" name="psw" >
+            <input id="psw" type="password" name="psw">
             <label for="psw">Contraseña actual</label>
         </div>
         <div class="input-field col s12">
             <i class="material-icons prefix pt-2">lock</i>
-            <input id="pswNew" type="password" name="pswNew" >
+            <input id="pswNew" type="password" name="pswNew">
             <label for="pswNew">Nueva contraseña</label>
         </div>
-        <div class="input-field col s12">            
-            <input id="pswConfirm" type="password" name="pswConfirm" >
+        <div class="input-field col s12">
+            <input id="pswConfirm" type="password" name="pswConfirm">
             <label for="pswConfirm">Confirmar contraseña</label>
         </div>
         <div><button onClick="editarPsw()" class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
@@ -240,5 +243,4 @@
 </div>
 <script src="/js/signup.js"></script>
 <script src="/js/modalsEditProfile.js"></script>
-
 {{/each}}
