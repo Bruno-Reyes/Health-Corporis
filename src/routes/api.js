@@ -33,7 +33,7 @@ router.post('/login', async (req, res) => {
             const token = jwt.sign({
                 id : data.id_usu
             }, secret , {
-                expiresIn : 5
+                expiresIn : 60 * 5
             })
 
             resjson.message = 'Sesion iniciada correctamente'
