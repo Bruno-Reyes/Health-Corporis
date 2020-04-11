@@ -28,6 +28,8 @@
             <br>
             <button onclick="me()">Enviar</button>
         </div>
+        <div id="token_container">
+        </div>
     </div>
 
     <script>
@@ -37,6 +39,7 @@
                 password : document.getElementById('password').value
             })
             console.log(res.data)
+            document.getElementById('token_container').innerHTML=res.data.token
         }
 
         const me = async () => {

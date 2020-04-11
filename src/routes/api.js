@@ -4,6 +4,7 @@ const pool = require('../../database');
 const jwt = require('jsonwebtoken')
 const { secret } = require('../lib/config')
 const helpers = require('../lib/helpers')
+const verifyToken = require('../lib/verifyTokens')
 
 router.post('/login', async (req, res) => {
     let { user, password } = req.body
@@ -50,20 +51,12 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.post('/me', (req,res) => {
+router.post('/me',verifyToken,async  (req,res) => {
     //Priemero se debe verificar un token
-
-    const { token } = req.body
-    console.log(token)
-
-    const decoded = jwt.verify(token , secret)
-    console.log(decoded)
-
-
+    const data = await pool.query('SELECT * FROM Usuario WHERE id_usu=?',[req.userId])
     res.json({
-        message : 'Building'
+        data : data[0]
     })
-    
 })
 
 module.exports = router;
