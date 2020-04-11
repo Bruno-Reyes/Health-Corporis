@@ -208,7 +208,7 @@ passport.use('local.signup', new LocalStrategy({
     if (validator.isEmpty(estatura, { ignore_whitespace: true }) == true) {
         return done(null, false, req.flash('Error', 'El campo Estatura no puede estar vacio'));
     }
-    let punto2 = [];
+    /* let punto2 = [];
     punto2 = estatura.toString().split(".");
     if (punto2.length > 1) {
         if (validator.isFloat(estatura, { min: 1.0, max: 2.5 }) == false) {
@@ -222,7 +222,7 @@ passport.use('local.signup', new LocalStrategy({
         if (validator.isInt(estatura, { min: 1, max: 2 }) == false) {
             return done(null, false, req.flash('Error', 'Los datos númericos de la estatura son equivocados rango 1.00-2.50 metros'));
         }
-    }
+    } */
 
 
     //validaciones de email
