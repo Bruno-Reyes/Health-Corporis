@@ -26,8 +26,8 @@ router.post('/login', async (req, res) => {
         resjson.message = 'El usuario no existe'
         resjson.auth = false
     }
-
-    if (data.nom_usu) {
+    
+    if (!(data==undefined)) {
         const psw = await helpers.decrypt(data.psw_usu)
         if (password === psw) {
 
