@@ -100,3 +100,4 @@ insert into Enfermedades (tip_enf) values('Ninguna'),('Cardiovascular'),('Discap
 insert into Intensidad (intensidad) values('Sin registro'),('Quemagrasa'),('Cardio'),('Alto Rendimiento');
 insert into TipoUsuario (nom_tdu) values ('Administrador'),('Usuario');
 insert into Usuario (nom_usu,psw_usu,id_tdu) values ('Administrador','9631f3b6914acfcaf21e9804d3',1);
+insert into Medicion(tip_med) values ('flexiones'),('minutos'),('repeticiones')
