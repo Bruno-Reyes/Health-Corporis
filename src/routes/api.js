@@ -26,15 +26,15 @@ router.post('/login', async (req, res) => {
         resjson.message = 'El usuario no existe'
         resjson.auth = false
     }
-    
-    if (!(data==undefined)) {
+
+    if (!(data == undefined)) {
         const psw = await helpers.decrypt(data.psw_usu)
         if (password === psw) {
 
             const token = jwt.sign({
-                id : data.id_usu
-            }, secret , {
-                expiresIn : 60 * 5
+                id: data.id_usu
+            }, secret, {
+                expiresIn: 60 * 60
             })
 
             resjson.message = 'Sesion iniciada correctamente'
@@ -51,11 +51,18 @@ router.post('/login', async (req, res) => {
 
 })
 
-router.post('/me',verifyToken,async  (req,res) => {
+router.post('/me', verifyToken, async (req, res) => {
     //Priemero se debe verificar un token
-    const data = await pool.query('SELECT * FROM Usuario WHERE id_usu=?',[req.userId])
+    const data = await pool.query('SELECT * FROM Usuario WHERE id_usu=?', [req.userId])
     res.json({
-        data : data[0]
+        data: data[0]
+    })
+})
+
+router.post('/infoCuenta', verifyToken, async(req, res)=>{
+    const data = await pool.query('select * from Usuario natural join Persona natural join Genero natural join Enfermedades natural join FrecuenciaEjercicio where id_usu=?', [req.user.id_usu])
+    res.json({
+        data:data[0]
     })
 })
 
