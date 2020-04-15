@@ -60,9 +60,16 @@ router.post('/me', verifyToken, async (req, res) => {
 })
 
 router.post('/infoCuenta', verifyToken, async(req, res)=>{
-    const data = await pool.query('select * from Usuario natural join Persona natural join Genero natural join Enfermedades natural join FrecuenciaEjercicio where id_usu=?', [req.user.id_usu])
+    const data = await pool.query('select * from Usuario natural join Persona natural join Genero natural join Enfermedades natural join FrecuenciaEjercicio where id_usu=?', [req.userId])    
+    const info={
+        Usuario: data[0].nom_usu,
+        Email: data[0].email_usu,
+        Nombre: data[0].nombre+' '+data[0].apellido,        
+        Genero: data[0].nom_gen,
+        Padecimientos:data[0].tip_enf
+    }       
     res.json({
-        data:data[0]
+        data:info
     })
 })
 
