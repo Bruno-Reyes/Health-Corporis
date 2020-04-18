@@ -1,3 +1,36 @@
-.navbar-fixed{
-    color: #2E9AFE;
+/*Soy un Dios :v*/
+
+@media only screen and (min-width: 993px){
+    /*Para centrar el form de login*/
+    .row .col.l4 {
+        margin-top: 3rem;
+        margin-left: 35%;
+    }
+    /*Dando margin al nav*/
+    nav .brand-logo{
+        margin-left: 3rem;
+    }
+}
+/*Corrigiendo errores en el cel*/
+@media only screen and (max-width: 490px){
+    nav .brand-logo{
+        font-size:1.8rem;
+    }
+    .select-wrapper input.select-dropdown{
+        font-size: .8rem;
+    }
+    .select-wrapper + label{
+        top: -36px;
+    }
+}
+@media only screen and (max-width: 407px){
+    /*Evitando que el titulo del nav desaparesca*/
+    nav .brand-logo{
+        font-size:1.5rem;
+    }
+}
+@media only screen and (max-width: 373px){
+    nav .brand-logo{
+        font-size:1.4rem;
+    }
 }
