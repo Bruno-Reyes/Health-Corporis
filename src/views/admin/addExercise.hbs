@@ -5,7 +5,7 @@
         <div class="col s12">
             <form action="/admin/addExercise" method="post" enctype="multipart/form-data" autocomplete="off">
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col-s6">
                         <select name="intensidad">
                             <option disabled selected>Seleccione una opción</option>
                             <option value="2">Quemagrasa</option>
@@ -16,43 +16,43 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col-s6">
                         <input placeholder="Nombre" id="nomeje" name="nomeje" type="text">
                         <label for="nomeje">Nombre del ejercicio</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s6">
+                    <div class="input-field col-s6">
                         <textarea id="description" name="description" class="materialize-textarea"></textarea>
-                        <label for="description">Descrpción del ejercicio</label>
+                        <label for="description">Descripción del ejercicio</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s2">
+                    <div class="input-field col-s2">
                         <input id="series" type="number" class="validate" name="series">
                         <label for="series">Series</label>
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col-s2">
                         <input id="cantidad" type="number" class="validate" name="cantidad">
                         <label for="cantidad">Cantidad</label>
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col-s2">
                         <select name="medicion">
                             <option disabled selected>Seleccione una opción</option>
                             <option value="1">flexiones</option>
                             <option value="2">minutos</option>
                             <option value="3">repeticiones</option>
                         </select>
-                        <label>Medidaks</label>
+                        <label>Medidas</label>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="file-field input-field col s6">
+                    <div class="file-field input-field col-s6">
                         <div class="btn  purple lighten-2">
-                            <span>Imagen del ejercicio</span>
+                            <span class="">Imagen del ejercicio</span>
                             <input type="file" name="image">
                         </div>
-                        <div class="file-path-wrapper">
+                        <div class="file-path-wrapper mt-4">
                             <input class="file-path validate" type="text" name="img" id="img">
                         </div>
                     </div>

@@ -1,3 +1,4 @@
+
 <style>
     .tips {
         display: grid;
@@ -5,11 +6,9 @@
         grid-template-rows: minmax(2rem, auto);
         grid-gap: 1rem;
     }
-
     p {
         text-align: justify;
     }
-
     .card:hover {
         border: #01A9DB solid 2px;
     }
@@ -23,7 +22,6 @@
             </div>
             <div class="card-content row" style="text-align: center;">
                 <span class="card-title grey-text text-darken-4">{{nom_eje}}</span>
-                
                 <a class="btn waves-effect yellow darken-3 col s4">Editar</a>
                 <button class="activator waves-effect waves-light btn col s4">Ver</button>
                 <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">Eliminar</a>
@@ -31,10 +29,9 @@
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">{{intensidad}}<i class="material-icons right">close</i></span>
                 <h6> {{series}} series de {{cantidad}} {{tip_med}} </h6>  <hr>
-                <p> {{des_eje}} </p> 
+                <p> {{des_eje}} </p>
             </div>
         </div>
         {{/each}}
-
     </div>
 </div>
