@@ -1,7 +1,19 @@
 /*Soy un Dios :v*/
+p {
+    text-align: justify;
+}
 
+.card.border:hover {
+    border: #01A9DB solid 2px;
+}
 .card .card-image img{
     height: 276px;
+}
+.tips {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: minmax(2rem, auto);
+    grid-gap: 1rem;
 }
 
 @media only screen and (min-width: 993px){
@@ -31,6 +43,10 @@
     }
     .select-wrapper + label{
         top: -36px;
+    }
+    /* Seccion de Ejercicios del usuario */
+    .tips {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 @media only screen and (max-width: 407px){
