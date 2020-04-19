@@ -1,11 +1,3 @@
-<style>
-    .mimg{        
-        height: 50%;
-    }
-    .card{
-        width:80%;
-    }
-</style>
 <div class="container">
     <div class="row">
         <div class="col s6 m6 l6">
@@ -13,29 +5,36 @@
                 <div class="col s12">
                     <div class="card">
                         <div class="card-image">
-                            <img src="img/ejerciciosUsu.jpg" class="mimg">
+                            {{!-- Se agrego el poder acceder a la seccion con la imagen --}}
+                            <a href="/user/exercises">
+                                <img src="img/ejerciciosUsu.jpg" class="mimg">
+                            </a>
                         </div>
-                        <div lass="card-action row">                            
-                            <a href="/user/exercises" class="col s12 btn blue lighten-2">Mis ejercicios</a>                            
+                        <div class="card-action row">
+                            <a href="/user/exercises" class="col s12 btn blue lighten-2">
+                                Mis ejercicios
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col s6 m6 l6">
-            <div class="row">                
+            <div class="row">
                 <div class="col s12">
                     <div class="card">
                         <div class="card-image">
-                            <img src="img/graficas.jpg" class="mimg" >
+                            <a href="/user/seguimiento">
+                                <img src="img/graficas.jpg" class="mimg" >
+                            </a>
                         </div>
-                        <div lass="card-action row">                            
+                        <div class="card-action row">
                             <a href="/user/seguimiento" class="col s12 btn purple accent-1">Gráfica de seguimiento</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
     <div class="row">
         <div class="col s6 m6 l6">
@@ -43,10 +42,12 @@
                 <div class="col s12">
                     <div class="card">
                         <div class="card-image">
-                            <img src="img/frecuencia.jpg" class="mimg">
+                            <a href="/user/frecuencia">
+                                <img src="img/frecuencia.jpg" class="mimg">
+                            </a>
                         </div>
-                        <div lass="card-action row">                            
-                            <a href="/user/frecuencia" class="col s12 btn blue lighten-2">Intensidad de ejercicios</a>                            
+                        <div class="card-action row">
+                            <a href="/user/frecuencia" class="col s12 btn blue lighten-2">Intensidad de ejercicios</a>
                         </div>
                     </div>
                 </div>
@@ -57,10 +58,12 @@
                 <div class="col s12">
                     <div class="card">
                         <div class="card-image">
-                            <img src="img/editar.jpg" class="mimg">
+                            <a href="/user/editprofile">
+                                <img src="img/editar.jpg" class="mimg">
+                            </a>
                         </div>
-                        <div lass="card-action row">                            
-                            <a href="/user/editprofile" class="col s12 btn red accent-2">Editar perfil</a>                            
+                        <div class="card-action row">
+                            <a href="/user/editprofile" class="col s12 btn red accent-2">Editar perfil</a>
                         </div>
                     </div>
                 </div>

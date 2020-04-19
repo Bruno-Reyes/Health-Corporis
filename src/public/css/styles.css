@@ -1,5 +1,9 @@
 /*Soy un Dios :v*/
 
+.card .card-image img{
+    height: 276px;
+}
+
 @media only screen and (min-width: 993px){
     /*Para centrar el form de login*/
     .row .col.l4 {
@@ -9,6 +13,12 @@
     /*Dando margin al nav*/
     nav .brand-logo{
         margin-left: 3rem;
+    }
+}
+@media only screen and (max-width: 612px){
+    /* Responsive Para la seccion de profile del usuario :b */
+    .row .col.s6{
+        width: 100%;
     }
 }
 /*Corrigiendo errores en el cel*/
