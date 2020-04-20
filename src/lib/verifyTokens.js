@@ -7,7 +7,8 @@ const verifyToken = (req,res,next) =>{
         if(err){
             res.json({
                 message : 'Ocurrio algún error, intenta volver a iniciar sesión',
-                error : err.message
+                verify:false,
+                error : err
             })
         }
         else{

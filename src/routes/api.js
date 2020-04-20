@@ -34,7 +34,7 @@ router.post('/login', async (req, res) => {
             const token = jwt.sign({
                 id: data.id_usu
             }, secret, {
-                expiresIn: 60 * 60
+                expiresIn: 60 * 60 * 24 * 30 
             })
 
             resjson.message = 'Sesion iniciada correctamente'
@@ -49,6 +49,12 @@ router.post('/login', async (req, res) => {
     res.json(resjson)
 
 
+})
+
+router.post('/verify',verifyToken, async(req, res)=>{
+    res.json({
+        verify:true
+    })
 })
 
 router.post('/me', verifyToken, async (req, res) => {
