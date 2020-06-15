@@ -1,0 +1,246 @@
+<div class="container">
+    <div class="row">
+        <div class="col s12">
+            {{#each infoUser }}
+            <ul class="collection">
+                <li class="collection-item avatar">
+                    <i class="material-icons circle light-blue lighten-2">face</i>
+                    <span class="title">Nombre:</span>
+                    <p>
+                        <div id="container-nombre">
+                            {{nombre}}
+                        </div>
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalNombre"><i
+                            class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle light-blue lighten-2">insert_emoticon</i>
+                    <span class="title">Apellido:</span>
+                    <p>
+                        <div id="container-apellido">
+                            {{apellido}}
+                        </div>
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalApellido"><i
+                            class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle teal lighten-2">date_range</i>
+                    <span class="title">Fecha de nacimiento:</span>
+                    <p>
+                        <div class="container-fecha">{{fec_nac}}</div>
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content"
+                        href="#modalFechaNacimiento"><i class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle teal lighten-2">wc</i>
+                    <span class="title">Genero:</span>
+                    <p>
+                        <div id="container-genero">{{nom_gen}}</div>
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalGenero"><i
+                            class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle  deep-purple accent-1">sentiment_neutral</i>
+                    <span class="title">Enfermedad:</span>
+                    <p>
+                        {{tip_enf}}
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalEnfermedad"><i
+                            class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle  deep-purple accent-1">directions_bike</i>
+                    <span class="title">Frecuencia de ejercicio:</span>
+                    <p>
+                        <div id="container-frecuencia">{{fre_eje}}</div>
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalFrecuencia"><i
+                            class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle  light-green accent-3">mail_outline</i>
+                    <span class="title">Correo electrónico:</span>
+                    <p>
+                        <div id="container-email">{{email_usu}}</div>
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalEmail"><i
+                            class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle  light-green accent-3">person</i>
+                    <span class="title">Usuario:</span>
+                    <p>
+                        <div id="container-usuario">{{nom_usu}}</div>
+                    </p>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalUsuario"><i
+                            class="material-icons">edit</i></a>
+                </li>
+                <li class="collection-item avatar">
+                    <i class="material-icons circle  light-green accent-3">lock_open</i>
+                    <span class="title">Contraseña:</span>
+                    <a class="waves-effect waves-light btn modal-trigger secondary-content" href="#modalPsw"><i
+                            class="material-icons">edit</i></a>
+                </li>
+            </ul>
+            {{/each}}
+        </div>
+    </div>
+</div>
+{{#each infoUser}}
+<!-- Modal Structure Nombre-->
+<div id="modalNombre" class="modal">
+    <div class="modal-content">
+        <h4>Editar nombre</h4>
+        <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">person_outline</i>
+            <input id="nombre" type="text" name="nombre" value="{{nombre}}">
+            <label for="nombre" class="center-align">Nombre</label>
+        </div>
+        <div><button onClick="editarNombre()" class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure Apellido-->
+<div id="modalApellido" class="modal">
+    <div class="modal-content">
+        <h4>Editar apellido</h4>
+        <div class="input-field col s12">
+            <input id="apellido" type="text" name="apellido" value="{{apellido}}">
+            <label for="apellido" class="center-align">Apellido</label>
+        </div>
+        <div><button onClick="editarApellido()"
+                class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure Fecha de nacimiento-->
+<div id="modalFechaNacimiento" class="modal">
+    <div class="modal-content">
+        <h4>Editar fecha de nacimiento</h4>
+        <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">date_range</i>
+            <input type="text" id="fecha_nacimiento" name="fecha_nacimiento" value="{{user.fec_nac}}"
+                placeholder="yyyy/mm/dd">
+            <label for="fecha_nacimiento">Fecha de Nacimiento</label>
+        </div>
+        <div><button onClick="editarFecha()" class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure Genero-->
+<div id="modalGenero" class="modal">
+    <div class="modal-content">
+        <h4>Editar genero</h4>
+        <div class="input-field col s6">
+            <form name="Genero">
+                <p>
+                    <label>
+                        <input class="with-gap" name="Genero" type="radio" value="Masculino" />
+                        <span>Masculino</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input class="with-gap" name="Genero" type="radio" value="Femenino" />
+                        <span>Femenino</span>
+                    </label>
+                </p>
+            </form>
+        </div>
+        <div><button onClick="editarGenero()" class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure Enfermedad-->
+<div id="modalEnfermedad" class="modal">
+    <div class="modal-content">
+        <h4>Editar padecimientos medicos</h4>
+        <div class="input-field col s6">
+            <select name="Enfermedad" id="Enfermedad">
+                <option disabled selected>{{tip_enf}}</option>
+                <option value="Ninguna">Ninguna</option>
+                <option value="Cardiovascular">Enfermedad Cardiovascular (Respiratoria)</option>
+                <option value="Discapacidad Motriz">Discapacidad Motriz</option>
+            </select>
+            <label>Padece de alguna enfermedad</label>
+        </div>
+        <div><button onClick="editarEnfermedad()"
+                class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Structure Frecuencia de ejercicio-->
+<div id="modalFrecuencia" class="modal">
+    <div class="modal-content">
+        <h4>Editar frecuencia de ejercicio</h4>
+        <div class="input-field col s12">
+            <select name="Frecuencia" id="Frecuencia">
+                <option disabled selected>{{fre_eje}}</option>
+                <option value="Nunca">Nunca</option>
+                <option value="Raramente">Raramente</option>
+                <option value="Ocasionalmente">Ocasionalmente</option>
+                <option value="Ocasionalmente">Generalmente</option>
+                <option value="Ocasionalmente">Siempre</option>
+            </select>
+            <label for="Frecuencia">¿Con que frecuencia haces ejercicio?</label>
+        </div>
+        <div><button onClick="editarFrecuencia()"
+                class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure Email-->
+<div id="modalEmail" class="modal">
+    <div class="modal-content">
+        <h4>Editar correo electrónico</h4>
+        <div class="input-field col s6">
+            <i class="material-icons prefix pt-2">email</i>
+            <input id="email" type="text" name="email" value="{{email_usu}}">
+            <label for="email" class="center-align">Email</label>
+        </div>
+        <div><button onClick="editarEmail()" class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure Usuario-->
+<div id="modalUsuario" class="modal">
+    <div class="modal-content">
+        <h4>Editar usuario</h4>
+        <div class="input-field col s6">
+            <i class="material-icons prefix pt-2">mood</i>
+            <input id="usuario" type="text" name="usuario" value={{nom_usu}}>
+            <label for="usuario" class="center-align">Usuario</label>
+        </div>
+        <div><button onClick="editarUsuario()" class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<div id="modalPsw" class="modal">
+    <div class="modal-content">
+        <h4>Editar contraseña</h4>
+        <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">lock_outline</i>
+            <input id="psw" type="password" name="psw">
+            <label for="psw">Contraseña actual</label>
+        </div>
+        <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">lock</i>
+            <input id="pswNew" type="password" name="pswNew">
+            <label for="pswNew">Nueva contraseña</label>
+        </div>
+        <div class="input-field col s12">
+            <input id="pswConfirm" type="password" name="pswConfirm">
+            <label for="pswConfirm">Confirmar contraseña</label>
+        </div>
+        <div><button onClick="editarPsw()" class="modal-close waves-effect waves-green btn-flat btn">Editar</button>
+        </div>
+    </div>
+</div>
+<script src="/js/signup.js"></script>
+<script src="/js/modalsEditProfile.js"></script>
+{{/each}}

@@ -1,0 +1,31 @@
+#contentWrap {
+    display: none;
+}
+
+#chat {
+    overflow-y: scroll;
+    height: 300px;
+}
+
+.error {
+    color: red;
+}
+
+.whisper {
+    color: gray;
+    font-style: italic;
+}
+
+.older {
+    color: blue;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.old-admin {
+    color: blue;
+    font-style: italic;
+}
+
+#Usuarios-S {
+    width: 100px;
+}
