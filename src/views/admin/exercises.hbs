@@ -22,7 +22,12 @@
             </div>
             <div class="card-content row" style="text-align: center;">
                 <span class="card-title grey-text text-darken-4">{{nom_eje}}</span>
-                <a class="btn waves-effect yellow darken-3 col s4">Editar</a>
+
+                <a class="btn waves-effect yellow darken-3 col s4" 
+                href="/admin/editExercise/{{id_eje}}">
+                    Editar
+                </a>
+
                 <button class="activator waves-effect waves-light btn col s4">Ver</button>
                 <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">Eliminar</a>
             </div>

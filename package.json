@@ -37,7 +37,7 @@
     "validator": "^12.2.0"
   },
   "devDependencies": {
-    "handlebars": "^4.5.0",
+    "handlebars": "^4.7.6",
     "nodemon": "^2.0.4"
   }
 }
