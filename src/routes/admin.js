@@ -7,14 +7,15 @@ const multer = require("multer");
 const path = require("path");
 const uuid = require("uuid/v1");
 const fs = require("fs");
+const swal = require("sweetalert");
 
+//Upload image
 const storage = multer.diskStorage({
   destination: path.join(__dirname, "../public/img"),
   filename: (req, file, cb) => {
     cb(null, uuid() + path.extname(file.originalname));
   },
 });
-
 const configMulter = multer({
   storage,
   fileFilter: (req, file, cb) => {
@@ -29,11 +30,13 @@ const configMulter = multer({
   },
 }).single("image");
 
+//Chat
 router.get("/users/chat", isLoggedIn, async (req, res) => {
   req.app.locals.layout = "admin";
   res.render("admin/chatAdmin");
 });
 
+//List of exercises
 router.get("/exercises", isLoggedIn, async (req, res) => {
   const exercises = await pool.query(
     "select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion;"
@@ -42,11 +45,12 @@ router.get("/exercises", isLoggedIn, async (req, res) => {
   res.render("admin/exercises.hbs", { exercises });
 });
 
-router.get("/addExercises", isLoggedIn, async (req, res) => {
+//Add Exercise
+router.get("/addExercise", isLoggedIn, async (req, res) => {
   req.app.locals.layouts = "admin";
   res.render("admin/addExercise.hbs");
 });
-
+//Form Add Exercise
 router.post("/addExercise", isLoggedIn, configMulter, async (req, res) => {
   let {
     nomeje,
@@ -57,30 +61,58 @@ router.post("/addExercise", isLoggedIn, configMulter, async (req, res) => {
     medicion,
   } = req.body;
 
-  let newExercise = {
-    nom_eje: "",
-    img_eje: "",
-    des_eje: "",
-    series: 0,
-    cantidad: 0,
-    id_int: 0,
-    id_med: 0,
-  };
+  try {
+    var validate_nomEje = !validator.isEmpty(nomeje);
+    var validate_imgEje = !validator.isEmpty(req.file.filename);
+    var validate_desEje = !validator.isEmpty(description);
+    var validate_series = !validator.isEmpty(series);
+    var validate_cantidad = !validator.isEmpty(cantidad);
+    var validate_idInt = !validator.isEmpty(intensidad);
+    var validate_idMed = !validator.isEmpty(medicion);
+  } catch (err) {
+    return res.status(200).send({
+      status: "error",
+      message: "Faltan Datos",
+    });
+  }
 
-  newExercise.nom_eje = nomeje;
-  newExercise.img_eje = "/img/" + req.file.filename;
-  newExercise.des_eje = description;
-  newExercise.series = series;
-  newExercise.cantidad = cantidad;
-  newExercise.id_int = intensidad;
-  newExercise.id_med = medicion;
+  if (
+    validate_nomEje &&
+    validate_imgEje &&
+    validate_desEje &&
+    validate_series &&
+    validate_cantidad &&
+    validate_idInt &&
+    validate_idMed
+  ) {
+    let newExercise = {
+      nom_eje: "",
+      img_eje: "",
+      des_eje: "",
+      series: 0,
+      cantidad: 0,
+      id_int: 0,
+      id_med: 0,
+    };
 
-  await pool.query("insert into Ejercicio set ?", [newExercise]);
-  req.flash(
-    "Success",
-    `El ejercicio ${newExercise.nom_eje} se agregó con éxito`
-  );
-  res.redirect("/admin/exercises");
+    newExercise.nom_eje = nomeje;
+    newExercise.img_eje = "/img/" + req.file.filename;
+    newExercise.des_eje = description;
+    newExercise.series = series;
+    newExercise.cantidad = cantidad;
+    newExercise.id_int = intensidad;
+    newExercise.id_med = medicion;
+
+    await pool.query("insert into Ejercicio set ?", [newExercise]);
+    req.flash(
+      "Success",
+      `El ejercicio ${newExercise.nom_eje} se agregó con éxito`
+    );
+    res.redirect("/admin/exercises");
+  } else {
+    req.flash("Error", `Faltan Datos`);
+    res.redirect("/admin/addExercise");
+  }
 });
 
 //Edit
@@ -102,32 +134,59 @@ router.post("/editExercise/:id", isLoggedIn, configMulter, async (req, res) => {
     intensidad,
     medicion,
   } = req.body;
-  let editExercise = {
-    nom_eje: "",
-    img_eje: "",
-    des_eje: "",
-    series: 0,
-    cantidad: 0,
-    id_int: 0,
-    id_med: 0,
-  };
-  editExercise.nom_eje = nomeje;
-  editExercise.img_eje = "/img/" + req.file.filename;
-  editExercise.des_eje = description;
-  editExercise.series = series;
-  editExercise.cantidad = cantidad;
-  editExercise.id_int = intensidad;
-  editExercise.id_med = medicion;
-  console.log(editExercise);
-  await pool.query("UPDATE Ejercicio set ? WHERE id_eje = ?", [
-    editExercise,
-    id,
-  ]);
-  req.flash(
-    "Success",
-    `El ejercicio ${editExercise.nom_eje} se edito con éxito`
-  );
-  res.redirect("/admin/exercises");
+  try {
+    var validate_nomEje = !validator.isEmpty(nomeje);
+    var validate_imgEje = !validator.isEmpty(req.file.filename);
+    var validate_desEje = !validator.isEmpty(description);
+    var validate_series = !validator.isEmpty(series);
+    var validate_cantidad = !validator.isEmpty(cantidad);
+    var validate_idInt = !validator.isEmpty(intensidad);
+    var validate_idMed = !validator.isEmpty(medicion);
+  } catch (err) {
+    return res.status(200).send({
+      status: "error",
+      message: "Faltan Datos",
+    });
+  }
+  if (
+    validate_nomEje &&
+    validate_imgEje &&
+    validate_desEje &&
+    validate_series &&
+    validate_cantidad &&
+    validate_idInt &&
+    validate_idMed
+  ) {
+    let editExercise = {
+      nom_eje: "",
+      img_eje: "",
+      des_eje: "",
+      series: 0,
+      cantidad: 0,
+      id_int: 0,
+      id_med: 0,
+    };
+    editExercise.nom_eje = nomeje;
+    editExercise.img_eje = "/img/" + req.file.filename;
+    editExercise.des_eje = description;
+    editExercise.series = series;
+    editExercise.cantidad = cantidad;
+    editExercise.id_int = intensidad;
+    editExercise.id_med = medicion;
+    console.log(editExercise);
+    await pool.query("UPDATE Ejercicio set ? WHERE id_eje = ?", [
+      editExercise,
+      id,
+    ]);
+    req.flash(
+      "Success",
+      `El ejercicio ${editExercise.nom_eje} se edito con éxito`
+    );
+    res.redirect("/admin/exercises");
+  } else {
+    req.flash("Error", `Faltan Datos`);
+    res.redirect("/admin/addExercise");
+  }
 });
 
 //Delete

@@ -1,3 +1,7 @@
+Administrador
+alfa6iv7delta
+
+
 Crear formulario de registro en base a los siguientes datos
 
 pedir usuario user
