@@ -3,10 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="/css/index.css" /> -->
     <title>Document</title>
   </head>
-  <link rel="stylesheet" href="/css/index.css">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <body>
     <div class="container">
       <div class="login">
@@ -29,6 +28,7 @@
       <div id="token_container"></div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
       const login = async () => {
         const res = await axios.post("/api/login", {

@@ -1,31 +1,35 @@
+.nav-wrapper a:hover {
+  color: white;
+  text-decoration: none;
+}
 #contentWrap {
-    display: none;
+  display: none;
 }
 
 #chat {
-    overflow-y: scroll;
-    height: 300px;
+  overflow-y: scroll;
+  height: 300px;
 }
 
 .error {
-    color: red;
+  color: red;
 }
 
 .whisper {
-    color: gray;
-    font-style: italic;
+  color: gray;
+  font-style: italic;
 }
 
 .older {
-    color: blue;
-    font-family: 'Courier New', Courier, monospace;
+  color: blue;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .old-admin {
-    color: blue;
-    font-style: italic;
+  color: blue;
+  font-style: italic;
 }
 
 #Usuarios-S {
-    width: 100px;
+  width: 100px;
 }

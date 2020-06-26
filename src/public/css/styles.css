@@ -1,63 +1,44 @@
-/*Soy un Dios :v*/
-
-p {
-    text-align: justify;
+@media only screen and (min-width: 993px) {
+  /*Para centrar el form de login*/
+  .row .col.l4 {
+    margin-top: 3rem;
+    margin-left: 35%;
+  }
+  /*Dando margin al nav*/
+  nav .brand-logo {
+    margin-left: 3rem;
+  }
 }
-
-.card.border:hover {
-    border: #01A9DB solid 2px;
-}
-.card .card-image img{
-    height: 276px;
-}
-.tips {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: minmax(2rem, auto);
-    grid-gap: 1rem;
-}
-
-@media only screen and (min-width: 993px){
-    /*Para centrar el form de login*/
-    .row .col.l4 {
-        margin-top: 3rem;
-        margin-left: 35%;
-    }
-    /*Dando margin al nav*/
-    nav .brand-logo{
-        margin-left: 3rem;
-    }
-}
-@media only screen and (max-width: 612px){
-    /* Responsive Para la seccion de profile del usuario :b */
-    .row .col.s6{
-        width: 100%;
-    }
+@media only screen and (max-width: 612px) {
+  /* Responsive Para la seccion de profile del usuario :b */
+  .row .col.s6 {
+    width: 100%;
+  }
 }
 /*Corrigiendo errores en el cel*/
-@media only screen and (max-width: 490px){
-    nav .brand-logo{
-        font-size:1.8rem;
-    }
-    .select-wrapper input.select-dropdown{
-        font-size: .8rem;
-    }
-    .select-wrapper + label{
-        top: -36px;
-    }
-    /* Seccion de Ejercicios del usuario */
-    .tips {
-        grid-template-columns: repeat(1, 1fr);
-    }
+@media only screen and (max-width: 490px) {
+  nav .brand-logo {
+    font-size: 1.8rem;
+  }
+  .select-wrapper input.select-dropdown {
+    font-size: 0.8rem;
+  }
+  .select-wrapper + label {
+    top: -36px;
+  }
+  /* Seccion de Ejercicios del usuario */
+  .tips {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
-@media only screen and (max-width: 407px){
-    /*Evitando que el titulo del nav desaparesca*/
-    nav .brand-logo{
-        font-size:1.5rem;
-    }
+@media only screen and (max-width: 407px) {
+  /*Evitando que el titulo del nav desaparesca*/
+  nav .brand-logo {
+    font-size: 1.5rem;
+  }
 }
-@media only screen and (max-width: 373px){
-    nav .brand-logo{
-        font-size:1.4rem;
-    }
+@media only screen and (max-width: 373px) {
+  nav .brand-logo {
+    font-size: 1.4rem;
+  }
 }

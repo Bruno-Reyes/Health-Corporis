@@ -1,16 +1,50 @@
 <style>
     .tips {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         grid-template-rows: minmax(2rem, auto);
         grid-gap: 1rem;
+        justify-items: center;
     }
     p {
         text-align: justify;
     }
-
-    .card:hover {
-        border: #01A9DB solid 2px;
+    .card {
+        width: 335px;
+    }
+    .card .card-image img {
+        min-height: 251px   ;
+        max-height: 251px;
+    }
+    .botones {
+        display: grid;
+        grid-template-columns: repeat(2, 100px);
+        Justify-content: space-between; 
+    }
+    @media only screen and (max-width: 1200px) {
+        .tips {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media only screen and (max-width: 768px) {
+        .tips {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .card {
+            width: 250px;
+        }
+    }
+    @media only screen and (max-width: 540px) {
+        .tips {
+            grid-template-columns: repeat(1, 1fr);
+        }
+        .card {
+            width: 100%;
+        }
+        .card .card-image img {
+            min-height: 170px   ;
+            max-height: 170px;
+        }
     }
 </style>
 <div class="container">
@@ -20,30 +54,27 @@
         </a>
     </div>
 
-    <hr></hr>
-
+    <hr/>
+    <h4>Ejercicios Quemagrasa</h4>
     <div class="tips">
-        <hr />
-        <h4>Ejercicios Quemagrasa</h4>
-        <br/><br/>
         {{#each quemagrasa}}
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src={{img_eje}}>
+                <img loading="lazy" class="activator img-eje" src={{img_eje}}>
             </div>
-            <div class="card-content row" style="text-align: center;">
-                <span class="card-title grey-text text-darken-4">
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
                     {{nom_eje}}
+                    <hr />
                 </span>
-                <a class="btn waves-effect yellow darken-3 col s4" href="/admin/editExercise/{{id_eje}}">
-                    Editar
-                </a>
-                <button class="activator waves-effect waves-light btn col s4">
-                    Ver
-                </button>
-                <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">
-                    Eliminar
-                </a>
+                <p class="botones">
+                    <a class="waves-effect yellow darken-3 btn" href="/admin/editExercise/{{id_eje}}">
+                        Editar
+                    </a>
+                    <a class="waves-effect red darken-4 white-text text-darken-2 btn" href="/admin/delete/exercise/{{id_eje}}">
+                        Eliminar
+                    </a>
+                </p>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
@@ -76,29 +107,30 @@
         </div>
         {{/each}}
     </div>
-
+    
+    {{!-- EJERCICIOS DE CARDIO --}}
+    <hr />
+    <h4>Ejercicios de cardio</h4>
     <div class="tips">
-        <hr />
-        <h4>Ejercicios de cardio</h4>
-        <br/><br/>
         {{#each cardio}}
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src={{img_eje}}>
+                <img loading="lazy" class="activator img-eje" src={{img_eje}}>
             </div>
-            <div class="card-content row" style="text-align: center;">
-                <span class="card-title grey-text text-darken-4">
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
                     {{nom_eje}}
+                    <hr />
                 </span>
-                <a class="btn waves-effect yellow darken-3 col s4" href="/admin/editExercise/{{id_eje}}">
-                    Editar
-                </a>
-                <button class="activator waves-effect waves-light btn col s4">
-                    Ver
-                </button>
-                <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">
-                    Eliminar
-                </a>
+                {{!-- <p><a href="#">This is a link</a></p> --}}
+                <p class="botones">
+                    <a class="waves-effect yellow darken-3 btn" href="/admin/editExercise/{{id_eje}}">
+                        Editar
+                    </a>
+                    <a class="waves-effect red darken-4 white-text text-darken-2 btn" href="/admin/delete/exercise/{{id_eje}}">
+                        Eliminar
+                    </a>
+                </p>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
@@ -132,27 +164,29 @@
         {{/each}}
     </div>
 
+    {{!-- EJERCICIOS DE ALTO RENDIMIENTO --}}
+    <hr />
+    <h4>Ejercicios de alto rendimiento</h4>
     <div class="tips">
-        <h4>Ejercicios de alto rendimiento</h4>
-        <br/><br/>
         {{#each altoRend}}
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src={{img_eje}}>
+                <img loading="lazy" class="activator img-eje" src={{img_eje}}>
             </div>
-            <div class="card-content row" style="text-align: center;">
-                <span class="card-title grey-text text-darken-4">
+            <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">
                     {{nom_eje}}
+                    <hr />
                 </span>
-                <a class="btn waves-effect yellow darken-3 col s4" href="/admin/editExercise/{{id_eje}}">
-                    Editar
-                </a>
-                <button class="activator waves-effect waves-light btn col s4">
-                    Ver
-                </button>
-                <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">
-                    Eliminar
-                </a>
+                {{!-- <p><a href="#">This is a link</a></p> --}}
+                <p class="botones">
+                    <a class="waves-effect yellow darken-3 btn" href="/admin/editExercise/{{id_eje}}">
+                        Editar
+                    </a>
+                    <a class="waves-effect red darken-4 white-text text-darken-2 btn" href="/admin/delete/exercise/{{id_eje}}">
+                        Eliminar
+                    </a>
+                </p>
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
@@ -187,13 +221,3 @@
         {{/each}}
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
