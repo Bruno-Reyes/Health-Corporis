@@ -37,12 +37,12 @@ router.get("/users/chat", isLoggedIn, async (req, res) => {
 
 //List of exercises
 router.get("/exercises", isLoggedIn, async (req, res) => {
-  const exercises = await pool.query(
-    "select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion;"
-  );
+  const quemagrasa = await pool.query("select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion where id_int=2")
+  const cardio = await pool.query("select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion where id_int=3")
+  const altoRend = await pool.query("select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion where id_int=4")
   req.app.locals.layouts = "admin";
-  res.render("admin/exercises.hbs", { exercises });
-});
+  res.render("admin/exercises.hbs", { quemagrasa,cardio,altoRend });
+})
 
 //Add Exercise
 router.get("/addExercise", isLoggedIn, async (req, res) => {
@@ -191,18 +191,18 @@ router.post("/editExercise/:id", isLoggedIn, configMulter, async (req, res) => {
 //Delete
 router.get("/delete/exercise/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
-  const dir_img = await pool.query(
+  /* const dir_img = await pool.query(
     "SELECT img_eje,nom_eje from Ejercicio where id_eje =?",
     [id]
   );
   const dir = path.join(__dirname, "../public" + dir_img[0].img_eje);
   fs.unlink(dir, (err) => {
-    if (err) throw err;
-  });
+    if (err) throw err;${dir_img[0].nom_eje}
+  }); */
   await pool.query("DELETE FROM Ejercicio WHERE id_eje = ?", [id]);
   req.flash(
     "Success",
-    `Ejercicio ${dir_img[0].nom_eje} eliminado correctamente`
+    `Ejercicio /*  */ eliminado correctamente`
   );
   res.redirect("/admin/exercises");
 });

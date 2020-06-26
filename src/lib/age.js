@@ -23,6 +23,41 @@ controller.age = (mes,ano) => {
     }
 }
 
+controller.month = (mes) => {
+    console.log(mes);
+switch (mes) {
+    case 'Jan':
+        return 01;
+    case 'Feb':
+        return 02;
+    case 'Mar':
+        return 03;
+    case 'Abr':
+        return 04;
+    case 'May':
+        return 05;
+    case 'Jun':
+        console.log('Estoy en Junio');
+        
+        return 06;
+    case 'Jul':
+        return 07;
+    case 'Ago':
+        return 08;
+    case 'Sep':
+        return 09;
+    case 'Oct':
+        return 10;
+    case 'Nov':
+        return 11;
+    case 'Dec':
+        return 12;
+    default:
+        console.log('No estoy furulando');
+        
+}
+}
+
 controller.frecuencia= frec => {
     let intervalo;
     frec=parseInt(frec)
