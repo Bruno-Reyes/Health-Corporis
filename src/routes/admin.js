@@ -7,7 +7,6 @@ const multer = require("multer");
 const path = require("path");
 const uuid = require("uuid/v1");
 const fs = require("fs");
-const swal = require("sweetalert");
 
 //Upload image
 const storage = multer.diskStorage({
