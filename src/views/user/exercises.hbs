@@ -1,24 +1,33 @@
-<style>
-    .frecu-info {
-        background: #26a69a;
-    }
-</style>
 <script src="/js/frecuencia.js"></script>
 <div class="container">
-    <div class="frecu-info">
+    <div class="frecu-info" style="margin-bottom: 3rem; margin-top:1rem;">
         <h3>Tabla de Frecuencia</h3>
-        <p id="Reposo"></p>
-        <p id="Optima"></p>
-        <p id="Intensidad"></p>
+        <table class="striped">
+        <tbody>
+          <tr>
+            <td>Reposo:</td>
+            <td id="Reposo"></td>
+          </tr>
+          <tr>
+            <td>Optima:</td>
+            <td id="Optima"></td>
+          </tr>
+          <tr>
+            <td>Intensidad:</td>
+            <td id="Intensidad"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <div class="tips">
+        {{#each exercises}}
         <div class="card border">
             <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/img/sentadillas.jpg">
+                <img class="activator" src="{{img_eje}}">
             </div>
             <div class="card-content" style="text-align: center;">
                 <span class="card-title grey-text text-darken-4">
-                    Sentadillas
+                    {{nom_eje}}
                 </span>
                 <button class="activator waves-effect waves-light btn">
                     Ver
@@ -26,67 +35,29 @@
             </div>
             <div class="card-reveal">
                 <span class="card-title grey-text text-darken-4">
-                    Sentadillas
+                    {{nom_eje}}
                     <i class="material-icons right">close</i>
                 </span>
                 <p>
-                    Debes estar en posición de sentadillas, tus manos deben estar en la nuca de tu cabeza. En este
-                    ejercicios debes bajar y al momento de subir realizas un salto y vuelves a bajar.
-                    Realizar 2 series de 10 repeticiones.
+                    {{des_eje}}
+                    Realizar {{series}} series de {{cantidad}} {{tip_med}}.
                 </p>
             </div>
         </div>
-        <div class="card border">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/img/donkey-kicks.jpg">
-            </div>
-            <div class="card-content" style="text-align: center;">
-                <span class="card-title grey-text text-darken-4">
-                    Donkey Kicks
-                </span>
-                <button class="activator waves-effect waves-light btn">
-                    Ver
-                </button>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">
-                    Donkey Kicks
-                    <i class="material-icons right">close</i>
-                </span>
-                <p>
-                    Este ejercicios es por excelencia el mejor para reafirmar glúteos.
-                    Te colocas en posición de lagartija sólo que tus rodillas deben tocar el suelo, lo único que debes
-                    hacer es subir una pierna mientras que la otra se encuentra abajo. La pierna que está elevada puede
-                    permanecer unos
-                    segundos haciendo pequeño movimientos de arriba hacia abajo (sin bajar totalmente).
-                    Realizar 3 series de 10 repeticiones.
-                </p>
+        {{else}}
+
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">UPPS!</span>
+                        <p>Recuerda que en la seccion de INTENSIDAD DE EJERCICIOS debes agregar tu frecuencia Cardiaca
+                            y tu preferencia de trabajo con tu cuerpo.</p>
+                    </div>
+
+                </div>
             </div>
         </div>
-        <div class="card border">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="/img/doggy_hydrant.jpg">
-            </div>
-            <div class="card-content" style="text-align: center;">
-                <span class="card-title grey-text text-darken-4">
-                    Doogy Hydrant
-                </span>
-                <button class="activator waves-effect waves-light btn">
-                    Ver
-                </button>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">
-                    Doogy Hydrant
-                    <i class="material-icons right">close</i>
-                </span>
-                <p>
-                    Este ejercicios ayuda a mejorar la zona centro de las piernas, es una de las más difíciles y molestas
-                    para las mujeres. Para realizarlo, debes estar en posición como de un perro orinando, elevando la
-                    pierna.
-                    Realizar 2 series de 15 repeticiones.
-                </p>
-            </div>
-        </div>
+        {{/each}}
     </div>
 </div>

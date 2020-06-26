@@ -75,5 +75,37 @@ controller.frecuencia= frec => {
     return intervalo
 }
 
+const getRandomArbitrary = (min,max) => {
+    return Math.random() * (max-min) + min
+}
+
+controller.randomExercises = (exercises) => {
+    let contador = 0
+    let personalizado = []
+    let ejercicios=[];
+    ejercicios.push(Math.round(getRandomArbitrary(0,exercises.length-1)));
+    contador = contador +1
+    while(contador<4){
+        let random = Math.round(getRandomArbitrary(0,exercises.length-1));
+        let paso = false;
+            ejercicios.forEach(element => {
+                if(random === element){
+                    paso = true;
+                    this.break;
+                }
+            }) 
+            if(paso ==false){
+                ejercicios.push(random);
+                contador = contador+1;
+            }
+    }
+    ejercicios.forEach(element => {
+        personalizado.push(exercises[element])
+    })
+    
+    
+    return personalizado
+}
+
 module.exports = controller;
 

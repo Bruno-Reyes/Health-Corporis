@@ -9,10 +9,7 @@ const calculos = () => {
     let data = [true, {}]
     /*  Aqui se validan los datos si todo es correcto se modifica el valor de la posicion 0 en data a true*/
 
-    if (data[0] == false) {
-        data[1].message = 'Los datos son invalidos , intentalo de nuevo'
-        M.toast({ html: data[1].message })
-    } else {
+    if(data[0]===true){
         data[1].peso = peso
         data[1].estatura = estatura
         /* Calcular el imc */
@@ -27,7 +24,35 @@ const calculos = () => {
 }
 
 const registrarSeguimiento = () => {
-    let data = calculos()
+
+    let peso = document.getElementById('peso').value
+    let estatura = document.getElementById('estatura').value
+    let f=true
+    let message
+    if(validator.isEmpty(peso, {ignore_whitespace:true})===true || validator.isEmpty(estatura, {ignore_whitespace:true})===true){
+        f = false
+        message = 'Los datos estan vacios, intentalo de nuevo'
+        M.toast({ html: message })
+    }else if(validator.isNumeric(peso,{min:2,max:3,ignore_whitespace:true}) === false){
+        f = false
+        message = 'El campo peso solo puede contener números, intentalo de nuevo'
+        M.toast({ html: message })
+    }else if(validator.isLength(peso,{min:2, max:3}) === false){        
+        f = false
+        message = 'El campo peso solo puede contener de 2 a 3 digitos, intentalo de nuevo'
+        M.toast({ html: message })
+    }else if(validator.isNumeric(estatura, {ignore_whitespace:true}) === false){
+        f = false
+        message = 'El campo estatura solo acepta numeros, intentalo de nuevo'    
+        M.toast({ html: message })
+    }else if(validator.isLength(estatura,{min:2,max:3}) === false){
+        f = false
+        message = 'El campo estatura solo puede contener de 2 a 3 digitos, intentalo de nuevo'
+        M.toast({ html: message })
+    }
+
+    if(f===true){
+        let data = calculos()
 
     fetch('/user/registroSeguimiento', {
         method: 'POST',
@@ -42,6 +67,8 @@ const registrarSeguimiento = () => {
             M.toast({ html: res.message })
             drawChartFollow()
         })
+    }
+            
 }
 
 const drawBackgroundColor = () => {
