@@ -38,12 +38,12 @@ router.get("/users/chat", isLoggedIn, async (req, res) => {
 
 //List of exercises
 router.get("/exercises", isLoggedIn, async (req, res) => {
-  const exercises = await pool.query(
-    "select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion;"
-  );
+  const quemagrasa = await pool.query("select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion where id_int=2")
+  const cardio = await pool.query("select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion where id_int=3")
+  const altoRend = await pool.query("select id_eje,nom_eje,img_eje,des_eje,series,cantidad,intensidad,tip_med from Ejercicio natural join Intensidad natural join Medicion where id_int=4")
   req.app.locals.layouts = "admin";
-  res.render("admin/exercises.hbs", { exercises });
-});
+  res.render("admin/exercises.hbs", { quemagrasa,cardio,altoRend });
+})
 
 //Add Exercise
 router.get("/addExercise", isLoggedIn, async (req, res) => {

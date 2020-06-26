@@ -21,7 +21,103 @@
         </a>
     </div>
     <div class="tips">
-        {{#each exercises}}
+        <h4>Ejercicios Quemagrasa</h4>
+        {{#each quemagrasa}}
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src={{img_eje}}>
+            </div>
+            <div class="card-content row" style="text-align: center;">
+                <span class="card-title grey-text text-darken-4">{{nom_eje}}</span>
+
+                <a class="btn waves-effect yellow darken-3 col s4" href="/admin/editExercise/{{id_eje}}">
+                    Editar
+                </a>
+
+                <button class="activator waves-effect waves-light btn col s4">Ver</button>
+                <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">Eliminar</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{intensidad}}<i
+                        class="material-icons right">close</i></span>
+                <h6> {{series}} series de {{cantidad}} {{tip_med}} </h6>
+                <hr>
+                <p> {{des_eje}} </p>
+            </div>
+        
+        </div>
+        
+        {{else}}
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="/img/no_exercises.jpg">
+                        <span class="card-title">UPPS!</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Al parecer no existen ejercicios para asignar, ingresa algunos para que 
+                            nuestros usuarios comiencen a ejercitarse!
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="/admin/addExercise">Agrega aquí!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+            <hr></hr>
+
+        <h4>Ejercicios de cardio</h4>
+        {{#each cardio}}
+        <div class="card">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src={{img_eje}}>
+            </div>
+            <div class="card-content row" style="text-align: center;">
+                <span class="card-title grey-text text-darken-4">{{nom_eje}}</span>
+
+                <a class="btn waves-effect yellow darken-3 col s4" href="/admin/editExercise/{{id_eje}}">
+                    Editar
+                </a>
+
+                <button class="activator waves-effect waves-light btn col s4">Ver</button>
+                <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">Eliminar</a>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">{{intensidad}}<i
+                        class="material-icons right">close</i></span>
+                <h6> {{series}} series de {{cantidad}} {{tip_med}} </h6>
+                <hr>
+                <p> {{des_eje}} </p>
+            </div>
+        
+        </div>
+        
+        {{else}}
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="/img/no_exercises.jpg">
+                        <span class="card-title">UPPS!</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Al parecer no existen ejercicios para asignar, ingresa algunos para que 
+                            nuestros usuarios comiencen a ejercitarse!
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="/admin/addExercise">Agrega aquí!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+            <hr></hr>
+            <h4>Ejercicios de alto rendimiento</h4>
+        {{#each altoRend}}
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
                 <img class="activator" src={{img_eje}}>
