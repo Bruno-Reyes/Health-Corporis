@@ -1,0 +1,63 @@
+<script src="/js/frecuencia.js"></script>
+<div class="container">
+    <div class="frecu-info" style="margin-bottom: 3rem; margin-top:1rem;">
+        <h3>Tabla de Frecuencia</h3>
+        <table class="striped">
+        <tbody>
+          <tr>
+            <td>Reposo:</td>
+            <td id="Reposo"></td>
+          </tr>
+          <tr>
+            <td>Optima:</td>
+            <td id="Optima"></td>
+          </tr>
+          <tr>
+            <td>Intensidad:</td>
+            <td id="Intensidad"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tips">
+        {{#each exercises}}
+        <div class="card border">
+            <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator" src="{{img_eje}}">
+            </div>
+            <div class="card-content" style="text-align: center;">
+                <span class="card-title grey-text text-darken-4">
+                    {{nom_eje}}
+                </span>
+                <button class="activator waves-effect waves-light btn">
+                    Ver
+                </button>
+            </div>
+            <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">
+                    {{nom_eje}}
+                    <i class="material-icons right">close</i>
+                </span>
+                <p>
+                    {{des_eje}}
+                    Realizar {{series}} series de {{cantidad}} {{tip_med}}.
+                </p>
+            </div>
+        </div>
+        {{else}}
+
+        <div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">UPPS!</span>
+                        <p>Recuerda que en la seccion de INTENSIDAD DE EJERCICIOS debes agregar tu frecuencia Cardiaca
+                            y tu preferencia de trabajo con tu cuerpo.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>

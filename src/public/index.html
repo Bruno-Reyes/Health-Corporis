@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <link rel="stylesheet" href="/css/index.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <body>
+    <div class="container">
+      <div class="login">
+        <p>Usuario</p>
+        <br />
+        <input type="text" id="user" name="user" />
+        <br />
+        <p>Contraseña</p>
+        <br />
+        <input type="password" id="password" name="password" />
+        <br />
+        <button onclick="login()">Enviar</button>
+      </div>
+      <div class="signin">
+        <br />
+        <input type="text" id="token" />
+        <br />
+        <button onclick="me()">Enviar</button>
+      </div>
+      <div id="token_container"></div>
+    </div>
+
+    <script>
+      const login = async () => {
+        const res = await axios.post("/api/login", {
+          user: document.getElementById("user").value,
+          password: document.getElementById("password").value,
+        });
+        console.log(res.data);
+        document.getElementById("token_container").innerHTML = res.data.token;
+      };
+
+      const me = async () => {
+        const res = await axios.post("/api/me", {
+          token: document.getElementById("token").value,
+        });
+        console.log(res.data);
+      };
+    </script>
+  </body>
+</html>
