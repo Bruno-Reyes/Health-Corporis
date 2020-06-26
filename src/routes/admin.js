@@ -192,18 +192,18 @@ router.post("/editExercise/:id", isLoggedIn, configMulter, async (req, res) => {
 //Delete
 router.get("/delete/exercise/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
-  const dir_img = await pool.query(
+  /* const dir_img = await pool.query(
     "SELECT img_eje,nom_eje from Ejercicio where id_eje =?",
     [id]
   );
   const dir = path.join(__dirname, "../public" + dir_img[0].img_eje);
   fs.unlink(dir, (err) => {
-    if (err) throw err;
-  });
+    if (err) throw err;${dir_img[0].nom_eje}
+  }); */
   await pool.query("DELETE FROM Ejercicio WHERE id_eje = ?", [id]);
   req.flash(
     "Success",
-    `Ejercicio ${dir_img[0].nom_eje} eliminado correctamente`
+    `Ejercicio /*  */ eliminado correctamente`
   );
   res.redirect("/admin/exercises");
 });

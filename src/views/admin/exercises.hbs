@@ -1,4 +1,3 @@
-
 <style>
     .tips {
         display: grid;
@@ -6,14 +5,21 @@
         grid-template-rows: minmax(2rem, auto);
         grid-gap: 1rem;
     }
+
     p {
         text-align: justify;
     }
+
     .card:hover {
         border: #01A9DB solid 2px;
     }
 </style>
 <div class="container">
+    <div class="card-action">
+         <a class="btn-floating btn-large waves-effect waves-light red" href="/admin/addExercise">
+             <i class="material-icons">add</i>
+        </a>
+    </div>
     <div class="tips">
         {{#each exercises}}
         <div class="card">
@@ -23,8 +29,7 @@
             <div class="card-content row" style="text-align: center;">
                 <span class="card-title grey-text text-darken-4">{{nom_eje}}</span>
 
-                <a class="btn waves-effect yellow darken-3 col s4" 
-                href="/admin/editExercise/{{id_eje}}">
+                <a class="btn waves-effect yellow darken-3 col s4" href="/admin/editExercise/{{id_eje}}">
                     Editar
                 </a>
 
@@ -32,27 +37,45 @@
                 <a class="btn waves-effect red col s4" href="/admin/delete/exercise/{{id_eje}}">Eliminar</a>
             </div>
             <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">{{intensidad}}<i class="material-icons right">close</i></span>
-                <h6> {{series}} series de {{cantidad}} {{tip_med}} </h6>  <hr>
+                <span class="card-title grey-text text-darken-4">{{intensidad}}<i
+                        class="material-icons right">close</i></span>
+                <h6> {{series}} series de {{cantidad}} {{tip_med}} </h6>
+                <hr>
                 <p> {{des_eje}} </p>
+            </div>
+        
+        </div>
+        
+        {{else}}
+        <div class="row">
+            <div class="col s12 m7">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="/img/no_exercises.jpg">
+                        <span class="card-title">UPPS!</span>
+                    </div>
+                    <div class="card-content">
+                        <p>Al parecer no existen ejercicios para asignar, ingresa algunos para que 
+                            nuestros usuarios comiencen a ejercitarse!
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        <a href="/admin/addExercise">Agrega aquí!</a>
+                    </div>
+                </div>
             </div>
         </div>
         {{/each}}
     </div>
+    
 </div>
 
-<script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-      crossorigin="anonymous"
-    ></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>

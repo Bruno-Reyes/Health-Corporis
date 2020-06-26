@@ -5,6 +5,7 @@ const helpers = require('../lib/helpers');
 const validator = require('validator');
 const { isLoggedIn, isNotLoggedIn } = require('../lib/auth');
 const path = require('path');
+const age = require('../lib/age')
 
 router.get('/chat/:nom_usu', async(req, res) => {
     req.app.locals.layout = 'user';
@@ -212,6 +213,33 @@ router.get('/pdf', isLoggedIn, (req, res) => {
     });
 });
 
+router.post('/frecuencia', isLoggedIn , async (req,res) => {
+    let { Intensidad , FrecuenciaR } = req.body
+    
+    
+    await pool.query('UPDATE Usuario SET id_int = ? WHERE id_usu = ?',[Intensidad,req.user.id_usu])
+    let fecha = await pool.query('SELECT fec_nac FROM Persona natural join Usuario WHERE id_usu = ?',[req.user.id_usu])
+    let nacimiento = fecha[0].fec_nac
+    let f = new Date()
+    let edad =await pool.query('Select DATEDIFF(?,?)',[f,nacimiento])
+    let days = 0
+    for (const prop in edad[0]) {
+    days = edad[0][prop]
+    }
+    days = days/365
+    let edadReal = days.toString().substring(0,2)
+    edadReal = parseInt(edadReal)
+    let freOpt = 220 - edadReal
+    let id_per = await pool.query('select id_per from Persona natural join Usuario where id_usu=?',req.user.id_usu)
+    await pool.query('UPDATE Persona SET fre_rep = ?, fre_opt = ? WHERE id_per = ?',[FrecuenciaR,freOpt,id_per[0].id_per])
+    req.flash("Success", `Datos guardados correctamente!`)
+    res.redirect('/user/exercises')
+})
+
+router.get('/requestFre', isLoggedIn,async (req,res) => {
+    let data = await pool.query('Select fre_rep, fre_opt, intensidad from Persona natural join Usuario natural join Intensidad where id_usu = ?',[req.user.id_usu])
+    res.json({data: data[0]})
+})
 
 
 module.exports = router;
