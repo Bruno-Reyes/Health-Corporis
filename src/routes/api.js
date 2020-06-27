@@ -73,7 +73,7 @@ router.post('/infoCuenta', verifyToken, async(req, res) => {
         Nombre: data[0].nombre + ' ' + data[0].apellido,
         Genero: data[0].nom_gen,
         Padecimientos: data[0].tip_enf
-    }
+    }    
     res.json({
         data: info
     })
@@ -130,6 +130,7 @@ router.post('/newGenero', verifyToken, async(req, res) => {
 
 router.post('/newEnfermedad', verifyToken, async(req, res) => {
     const { New } = req.body
+    console.log('asdasdahsgdasasdas adsd asdas dasdagd')
     let id = await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [req.userId])
     let id_enf
     if (New === "Ninguna") {
@@ -167,9 +168,11 @@ router.post('/rutina', verifyToken, async(req, res)=>{
     } else {
         intensidad = await pool.query('select id_int from Usuario where id_usu=?', [req.userId])
         let exercises = await pool.query('SELECT nom_eje,img_eje,des_eje,series,cantidad,tip_med FROM Ejercicio natural join Medicion WHERE id_int=?', [intensidad[0].id_int])
-        exercises = age.randomExercises(exercises)  
-
-        res.json({exercises})
+        exercises = age.randomExercises(exercises) 
+                         
+        res.json({
+            data: exercises
+        })
     }
 
 })
