@@ -172,7 +172,7 @@ router.post('/rutina', verifyToken, async(req, res)=>{
         exercises = age.randomExercises(exercises)
                          
         res.json({
-            data: exercises[0],
+            data: exercises,
             message
         })
     }

@@ -28,7 +28,7 @@ router.get('/exercises', isLoggedIn, async(req, res) => {
     } else {
         intensidad = await pool.query('select id_int from Usuario where id_usu=?', [req.user.id_usu])
         let exercises = await pool.query('SELECT nom_eje,img_eje,des_eje,series,cantidad,tip_med FROM Ejercicio natural join Medicion WHERE id_int=?', [intensidad[0].id_int])
-        exercises = age.randomExercises(exercises)        
+        exercises = age.randomExercises(exercises)               
         req.app.locals.layouts = "user"
         res.render('user/exercises.hbs', { exercises })
     }
