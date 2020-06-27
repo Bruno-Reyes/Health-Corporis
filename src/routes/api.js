@@ -169,10 +169,10 @@ router.post('/rutina', verifyToken, async(req, res)=>{
     } else {
         intensidad = await pool.query('select id_int from Usuario where id_usu=?', [req.userId])
         let exercises = await pool.query('SELECT nom_eje,img_eje,des_eje,series,cantidad,tip_med FROM Ejercicio natural join Medicion WHERE id_int=?', [intensidad[0].id_int])
-        exercises = age.randomExercises(exercises) 
+        exercises = age.randomExercises(exercises)
                          
         res.json({
-            data: exercises,
+            data: exercises[0],
             message
         })
     }
