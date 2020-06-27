@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 const { secret } = require('../lib/config')
 const helpers = require('../lib/helpers')
 const verifyToken = require('../lib/verifyTokens')
+const age = require('../lib/age')
 
 router.post('/login', async(req, res) => {
     let { user, password } = req.body
@@ -160,18 +161,19 @@ router.post('/seguimiento', verifyToken, async(req, res) => {
 })
 
 router.post('/rutina', verifyToken, async(req, res)=>{
-    let frecuencias = await pool.query('select fre_rep, fre_opt from Persona natural join Usuario where id_usu = ?', [req.userId])
-    let data='Es necesario que ingreses tu frecuencia en reposo y el tipo de ejercico'
+    let frecuencias = await pool.query('select fre_rep, fre_opt from Persona natural join Usuario where id_usu = ?', [req.userId])  
+    let message  
     frecuencias = frecuencias[0]
     if (frecuencias.fre_rep === '0' && frecuencias.fre_opt === '0') {
-        res.json(data)
+        message='Es necesario que ingreses tu frecuencia en reposo y el tipo de ejercico'
     } else {
         intensidad = await pool.query('select id_int from Usuario where id_usu=?', [req.userId])
         let exercises = await pool.query('SELECT nom_eje,img_eje,des_eje,series,cantidad,tip_med FROM Ejercicio natural join Medicion WHERE id_int=?', [intensidad[0].id_int])
         exercises = age.randomExercises(exercises) 
                          
         res.json({
-            data: exercises
+            data: exercises,
+            message
         })
     }
 
