@@ -99,21 +99,22 @@ function validarAll() {
     else if (validator.isEmpty(peso, { ignore_whitespace: true }) == true) {
         toastr.warning('El campo peso no puede estar vacio');
         return false;
-    } else if (punto.length > 1) {
-        if (validator.isFloat(peso, { min: 30.00, max: 200.00 }) == false) {
-            toastr.warning('Los datos númericos del peso son equivocados rango 30.00-200.00 kilogramos');
-            return false;
-        }
-        if (punto[1].length > 2) {
-            punto[1].substring(0, 2);
-            peso = punto[0] + '.' + punto[1];
-        }
-    } else if (punto.length == 1) {
-        if (validator.isInt(peso, { min: 30, max: 200 }) == false) {
-            toastr.warning('Los datos númericos del peso son equivocados rango 30.00-200.00 kilogramos');
-            return false;
-        }
+    } else ///if (punto.length > 1) {
+    if (validator.isInt(peso, { min: 30, max: 200 }) == false) {
+        toastr.warning('Los datos númericos del peso son equivocados rango 30-200 kilogramos');
+        return false;
     }
+    /*
+            if (punto[1].length > 2) {
+                punto[1].substring(0, 2);
+                peso = punto[0] + '.' + punto[1];
+            }
+        } else if (punto.length == 1) {
+            if (validator.isInt(peso, { min: 30, max: 200 }) == false) {
+                toastr.warning('Los datos númericos del peso son equivocados rango 30.00-200.00 kilogramos');
+                return false;
+            }
+        }*/
     //validaciones de email
     else if (validator.isEmpty(email, { ignore_whitespace: true }) == true) {
         toastr.warning('El campo email no puede estar vacio');
@@ -132,11 +133,11 @@ function validarAll() {
     else if (validator.isEmpty(estatura, { ignore_whitespace: true }) == true) {
         toastr.warning('El campo Estatura no puede estar vacio');
         return false;
-    } else if (punto2.length > 1) {
-        if (validator.isFloat(estatura, { min: 1.0, max: 2.5 }) == false) {
-            toastr.warning('Los datos númericos de la estatura son equivocados rango 1.00-2.50 metros');
-            return false;
-        }
+    } else //if (punto2.length > 1) {
+    if (validator.isInt(estatura, { min: 100, max: 250 }) == false) {
+        toastr.warning('Los datos númericos de la estatura son equivocados rango 100-250 metros');
+        return false;
+        /*}
         if (punto2[1].length > 2) {
             punto2[1].substring(0, 2);
             peso = punto2[0] + '.' + punto2[1];
@@ -145,7 +146,7 @@ function validarAll() {
         if (validator.isInt(estatura, { min: 1, max: 2 }) == false) {
             toastr.warning('Los datos númericos de la estatura son equivocados rango 1.00-2.50 metros');
             return false;
-        }
+        }*/
     } else {
         return true;
     }

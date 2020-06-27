@@ -15,6 +15,7 @@ $(function() {
         e.preventDefault();
         socket.emit('new-user', msg, data => {
             console.log(msg)
+            console.log(URLactual)
             if (data) {
                 $('#nickWrap').hide()
                 $('#contentWrap').show()

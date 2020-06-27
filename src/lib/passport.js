@@ -188,13 +188,14 @@ passport.use('local.signup', new LocalStrategy({
     if (validator.isEmpty(peso, { ignore_whitespace: true }) == true) {
         return done(null, false, req.flash('Error', 'El campo peso no puede estar vacio'));
     }
-    let punto = [];
+    //espera
+    /*let punto = [];
     punto = peso.toString().split(".");
-    if (punto.length > 1) {
-        if (validator.isFloat(peso, { min: 30.00, max: 200.00 }) == false) {
-            return done(null, false, req.flash('Error', 'Los datos númericos del peso son equivocados rango 30.00-200.00 kilogramos'));
-        }
-        if (punto[1].length > 2) {
+    if (punto.length > 1) {*/
+    if (validator.isInt(peso, { min: 30, max: 200 }) == false) {
+        return done(null, false, req.flash('Error', 'Los datos númericos del peso son equivocados rango 30.00-200.00 kilogramos'));
+    }
+    /*if (punto[1].length > 2) {
             punto[1].substring(0, 2);
             peso = punto[0] + '.' + punto[1];
         }
@@ -202,11 +203,14 @@ passport.use('local.signup', new LocalStrategy({
         if (validator.isInt(peso, { min: 30, max: 200 }) == false) {
             return done(null, false, req.flash('Error', 'Los datos númericos del peso son equivocados rango 30.00-200.00 kilogramos'));
         }
-    }
+    }*/
 
     //validaciones de estatura
     if (validator.isEmpty(estatura, { ignore_whitespace: true }) == true) {
         return done(null, false, req.flash('Error', 'El campo Estatura no puede estar vacio'));
+    }
+    if (validator.isInt(estatura, { min: 160, max: 210 }) == false) {
+        return done(null, false, req.flash('Error', 'El campo Estatura solo acepta valores enteros de 160-210 cm'));
     }
     /* let punto2 = [];
     punto2 = estatura.toString().split(".");
@@ -250,8 +254,8 @@ passport.use('local.signup', new LocalStrategy({
     }
 
     //validaciones de edad
-    if (edad.age < 30) {
-        return done(null, false, req.flash('Error', 'El sistema no funciona con personas menores de 30 años'));
+    if (edad.age < 29) {
+        return done(null, false, req.flash('Error', 'El sistema no funciona con personas menores de 29 años'));
     }
     if (edad.real == false) {
         return done(null, false, req.flash('Error', 'La fecha de nacimiento es incorrecta'));

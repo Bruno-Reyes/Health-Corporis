@@ -1,4 +1,7 @@
 <script src="/js/signup.js"></script>
+<script src="/js/val_frecuencia.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/style.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <style>
     .container {
         margin-top: 2rem;
@@ -14,10 +17,10 @@
         <div class="col s12 m6 l6">
 
             <div class="row">
-                <form class="col s12" action="/user/frecuencia" method="post">
+                <form class="col s12" action="/user/frecuencia" method="post" onsubmit="return validarAll()">
                     <div class="row">
                         <div class="input-field col s6">
-                                <select name="Intensidad">
+                                <select name="Intensidad" id="IntensidadJS">
                                     <option disabled selected>Seleccione una opción</option>
                                     <option value="2">Quemagrasa</option>
                                     <option value="3">Cardio</option>
@@ -26,7 +29,7 @@
                                 <label>Intensidad</label>
                             </div>
                         <div class="input-field col s6">
-                            <input id="FrecuenciaR" type="text" name="FrecuenciaR">
+                            <input id="FrecuenciaR" type="text" name="FrecuenciaR" id="FrecuenciaRJS">
                             <label for="FrecuenciaR">Mi frecuencia en reposo es:</label>
                         </div>
                     </div>

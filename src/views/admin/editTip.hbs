@@ -1,0 +1,39 @@
+<style>
+    #row {
+        border: 2px solid #99a3a4;
+        /* box-shadow: 5px 5px 5px 5px #CDC9C9;*/
+        box-shadow: 10px 10px 5px 0px #CDC9C9;
+        margin-top: 2rem;
+        padding: 1rem 1rem 1rem 1rem;
+    }
+</style>
+<script src="/js/tipsval.js"></script>
+<div>
+    <div class="row">
+        <div class="col s4"></div>
+        <div class="col s4" id="row">
+            <div class="form">
+                <h4>Editar consejo</h4>
+                <form action="/admin/edicionConsejo/{{notes._id}}" method="post" autocomplete="off" class="col s12">
+                    <div class="input-field col s6">
+                        <input id="Titulo" type="text" name="title" autofocus maxlength="20" required="return true" value="{{notes.title}}">
+                        <label for="Titulo">Titulo</label>
+                    </div>
+                    <br><br>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea class="materialize-textarea" name="description" id="Descripcion" rows="3"
+                                maxlength="250"
+                                required="return true">{{notes.description}}</textarea>
+                            <label for="textarea1">Textarea</label>
+                        </div>
+                    </div>
+
+                    <button class="waves-effect waves-light btn" onclick="return Tip()"><i
+                            class="material-icons right">cloud</i>Enviar!</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col s4"></div>
+</div>
