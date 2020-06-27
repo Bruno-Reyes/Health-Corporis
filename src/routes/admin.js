@@ -265,7 +265,7 @@ router.get("/delete/exercise/:id", isLoggedIn, async(req, res) => {
     await pool.query("DELETE FROM Ejercicio WHERE id_eje = ?", [id]);
     req.flash(
         "Success",
-        `Ejercicio /*  */ eliminado correctamente`
+        `Ejercicio eliminado correctamente`
     );
     res.redirect("/admin/exercises");
 });
