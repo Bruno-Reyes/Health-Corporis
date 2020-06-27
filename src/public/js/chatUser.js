@@ -8,14 +8,12 @@ $(function() {
     const inputH = $('#inputH')
     const nickForm = $('#nickForm')
     var URLactual = window.location.href;
-    var msg = URLactual.substr(32)
+    var msg = URLactual.substr(48)
 
     //Eventos
     nickForm.submit(e => {
         e.preventDefault();
         socket.emit('new-user', msg, data => {
-            console.log(msg)
-            console.log(URLactual)
             if (data) {
                 $('#nickWrap').hide()
                 $('#contentWrap').show()

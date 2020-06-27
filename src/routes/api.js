@@ -89,7 +89,7 @@ router.post('/newUsuario', verifyToken, async(req, res) => {
 
 router.post('/newEmail', verifyToken, async(req, res) => {
     const { New } = req.body
-    await pool.query('update Usuario set email_usu=? where id_per=?', [New, req.userId])
+    await pool.query('update Usuario set email_usu=? where id_usu=?', [New, req.userId])
     res.json({
         data: 'Se ha editado correctamente tu correo electronico'
     })
@@ -97,7 +97,8 @@ router.post('/newEmail', verifyToken, async(req, res) => {
 
 router.post('/newNombre', verifyToken, async(req, res) => {
     const { NewName } = req.body
-    await pool.query('update Persona set nombre=? where id_per=?', [NewName, req.userId])
+    let id = await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [req.userId])
+    await pool.query('update Persona set nombre=? where id_usu=?', [NewName, id[0].id_per])
     res.json({
         data: 'Se ha editado correctamente tu nombre'
     })
@@ -105,7 +106,8 @@ router.post('/newNombre', verifyToken, async(req, res) => {
 
 router.post('/newApellido', verifyToken, async(req, res) => {
     const { NewLast } = req.body
-    await pool.query('update Persona set apellido=? where id_per=?', [NewLast, req.userId])
+    let id = await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [req.userId])
+    await pool.query('update Persona set apellido=? where id_per=?', [NewName, id[0].id_per])
     res.json({
         data: 'Se ha editado correctamente tu apellido'
     })
@@ -113,13 +115,14 @@ router.post('/newApellido', verifyToken, async(req, res) => {
 
 router.post('/newGenero', verifyToken, async(req, res) => {
     const { New } = req.body
+    let id = await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [req.userId])
     let id_gen = 0
     if (New === "Masculino") {
         id_gen = 1
     } else if (New === "Femenino") {
         id_gen = 2
     }
-    await pool.query('update Persona set id_gen=? where id_per=?', [id_gen, req.userId])
+    await pool.query('update Persona set id_gen=? where id_per=?', [id_gen, id[0].id_per])
     res.json({
         data: 'Se ha editado correctamente tu genero'
     })
@@ -127,6 +130,7 @@ router.post('/newGenero', verifyToken, async(req, res) => {
 
 router.post('/newEnfermedad', verifyToken, async(req, res) => {
     const { New } = req.body
+    let id = await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [req.userId])
     let id_enf
     if (New === "Ninguna") {
         id_enf = 1
@@ -135,15 +139,39 @@ router.post('/newEnfermedad', verifyToken, async(req, res) => {
     } else if (New === "Discapacidad Motriz") {
         id_enf = 3
     }
-    await pool.query('update Persona set id_enf=? where id_per=?', [id_enf, req.userId])
+    await pool.query('update Persona set id_enf=? where id_per=?', [id_enf, id[0].id_per])
     res.json({
         data: 'Se ha editado correctamente tu padecimiento'
     })
 })
 
-router.post('seguimiento', verifyToken, async(req, res) => {
-    let info = await pool.query('SELECT imc_seg,fec_reg FROM Usuario natural join Persona natural join Seguimiento where id_usu = ?', [req.userId])
-    res.json(info[0])
+router.post('/seguimiento', verifyToken, async(req, res) => {
+    let info = await pool.query('SELECT imc_seg,fec_reg FROM Usuario natural join Persona natural join Seguimiento where id_usu = ?', [req.userId])    
+    let imc=[]
+    let date=[]
+
+    for (let i = 0; i < info[0]; i++) {
+        imc[i]=info[0].imc_seg
+        date[i]=info[0].fec_reg
+    }
+
+    res.json({imc, date})
+})
+
+router.post('/rutina', verifyToken, async(req, res)=>{
+    let frecuencias = await pool.query('select fre_rep, fre_opt from Persona natural join Usuario where id_usu = ?', [req.userId])
+    let data='Es necesario que ingreses tu frecuencia en reposo y el tipo de ejercico'
+    frecuencias = frecuencias[0]
+    if (frecuencias.fre_rep === '0' && frecuencias.fre_opt === '0') {
+        res.json(data)
+    } else {
+        intensidad = await pool.query('select id_int from Usuario where id_usu=?', [req.userId])
+        let exercises = await pool.query('SELECT nom_eje,img_eje,des_eje,series,cantidad,tip_med FROM Ejercicio natural join Medicion WHERE id_int=?', [intensidad[0].id_int])
+        exercises = age.randomExercises(exercises)  
+
+        res.json({exercises})
+    }
+
 })
 
 module.exports = router;

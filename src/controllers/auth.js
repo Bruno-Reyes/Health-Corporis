@@ -12,16 +12,16 @@ controller.loginrender = (req, res) => {
     res.render('auth/login');
 }
 
-controller.profile = async (req, res) => {
+controller.profile = async(req, res) => {
 
     if (req.user.id_tdu == 2) {
         const datosusuario = await pool.query('select * from Usuario natural join Persona natural join Genero natural join Enfermedades natural join Seguimiento natural join FrecuenciaEjercicio where id_usu=?', [req.user.id_usu]);
         req.app.locals.layout = 'user';
         res.render('profile', { datosusuario });
-    } else {
+    } else if (req.user.id_tdu == 1) {
         req.app.locals.layout = 'admin';
         res.render('admin/index');
-    } 
+    }
 
 }
 

@@ -11,12 +11,27 @@
         margin-top: 1rem;
         margin-bottom: 1rem;
     }
+
+    body{
+        background:  #fdebd0 ;    
+    }
+
+    #row {
+        border: 2px solid #8ec8ce;
+        /* box-shadow: 5px 5px 5px 5px #CDC9C9;*/
+        box-shadow: 10px 10px 5px 0px #CDC9C9;
+        margin-top: 2rem;
+        padding: 1rem 1rem 1rem 1rem;
+        background: white;
+    }
+
 </style>
 <div class="container">
     <div class="row">
-        <div class="col s12 m6 l6">
-
+        <div class="col s2"></div>
+        <div class="col s4">
             <div class="row">
+                <h4>Registra tu Frecuencia</h4>
                 <form class="col s12" action="/user/frecuencia" method="post" onsubmit="return validarAll()">
                     <div class="row">
                         <div class="input-field col s6">
@@ -42,7 +57,7 @@
             </div>
 
         </div>
-        <div class="col s12 m6 l6">
+        <div class="col s4">
             <div>
                 <h5>Documentos importantes</h5>
                 <div class="orange lighten-5 pdf"><i class="material-icons red">picture_as_pdf</i><a
@@ -51,5 +66,6 @@
                         Información sobre la intensidad de los ejercicios</a></div>
             </div>
         </div>
+        <div class="col s2"></div>
     </div>
 </div>

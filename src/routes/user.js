@@ -114,18 +114,39 @@ router.get('/editprofile', isLoggedIn, async(req, res) => {
 //Aqui se van a editar todos los datos del usuario
 router.post('/editNombre', isLoggedIn, async(req, res) => {
     const { nombre } = req.body
-    const id = req.user.id_usu
-    await pool.query('update Persona set nombre=? where id_per=?', [nombre, id])
-    res.json({
-        message: 'Se ha editado correctamente el nombre',
-        data: nombre
-    })
+    const id = req.user.id_usu    
+    if (validator.isEmpty(nombre, { ignore_whitespace: true }) == true) {
+        return done(null, false, req.flash('Error', 'El campo nombre esta vacio'));
+    }
+    if (validator.isAlpha(nombre.replace(/ /g, "")) == false) {
+        return done(null, false, req.flash('Error', 'El campo primer nombre solo debe contener letras'));
+    }
+    if (validator.isLength(nombre, { min: 3, max: 25 }) == false) {
+        return done(null, false, req.flash('Error', 'El campo Primer nombre debe de ser de minimo 3 y mámixo 25 caracteres'));
+    }
+    let palabra = [];
+    palabra = nombre.split(" ");
+    if (palabra.length > 1) {
+        if (palabra[1].length > 0) {
+            return done(null, false, req.flash('Error', 'El campo primer nombre solo debe contener una palabra'));
+        }
+    } else {
+        
+        let id_per=await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [id])       
+        await pool.query('update Persona set nombre=? where id_per=?', [nombre, id_per[0].id_per])
+        res.json({
+            message: 'Se ha editado correctamente el nombre',
+            data: nombre
+        })
+    }
 })
 
 router.post('/editApellido', isLoggedIn, async(req, res) => {
     const { apellido } = req.body
     const id = req.user.id_usu
-    await pool.query('update Persona set apellido=? where id_per=?', [apellido, id])
+
+    let id_per=await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [id])       
+    await pool.query('update Persona set apellido=? where id_per=?', [apellido, id_per[0].id_per])
     res.json({
         message: 'Se ha editado correctamente el apellido',
         data: apellido
@@ -135,7 +156,8 @@ router.post('/editApellido', isLoggedIn, async(req, res) => {
 router.post('/editFecha', isLoggedIn, async(req, res) => {
     const { fecha } = req.body
     const id = req.user.id_usu
-    await pool.query('update Persona set fec_nac=? where id_per=?', [fecha, id])
+    let id_per=await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [id])
+    await pool.query('update Persona set fec_nac=? where id_per=?', [fecha, id_per[0].id_per])
     res.json({
         message: 'Se ha editado correctamente tu fecha de nacimiento',
         data: fecha
@@ -151,7 +173,8 @@ router.post('/editGenero', isLoggedIn, async(req, res) => {
     } else if (genero === "Femenino") {
         id_gen = 2
     }
-    await pool.query('update Persona set id_gen=? where id_per=?', [id_gen, id])
+    let id_per=await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [id])
+    await pool.query('update Persona set id_gen=? where id_usu=?', [id_gen, id_per[0].id_per])
     res.json({
         message: 'Se ha editado correctamente tu genero',
         data: genero
@@ -169,7 +192,8 @@ router.post('/editEnfermedad', isLoggedIn, async(req, res) => {
     } else if (enfermedad === "Discapacidad Motriz") {
         id_enf = 3
     }
-    await pool.query('update Persona set id_enf=? where id_per=?', [id_enf, id])
+    let id_per=await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [id])
+    await pool.query('update Persona set id_enf=? where id_per=?', [id_enf, id_per[0].id_per])
     res.json({
         message: 'Se ha editado correctamente tu padecimiento medico',
         data: enfermedad
@@ -191,7 +215,8 @@ router.post('/editFrecuencia', isLoggedIn, async(req, res) => {
     } else if (frecuencia === "Siempre") {
         id_fre = 5
     }
-    await pool.query('update Persona set id_fre=? where id_per=?', [id_fre, id])
+    let id_per=await pool.query('SELECT id_per from Persona natural join Usuario WHERE id_usu=?', [id])
+    await pool.query('update Persona set id_fre=? where id_per=?', [id_fre, id_per[0].id_per])
     res.json({
         message: 'Se ha editado correctamente la frecuencia de ejercicio',
         data: frecuencia
@@ -201,21 +226,70 @@ router.post('/editFrecuencia', isLoggedIn, async(req, res) => {
 router.post('/editEmail', isLoggedIn, async(req, res) => {
     const { email } = req.body
     const id = req.user.id_usu
-    await pool.query('update Usuario set email_usu=? where id_per=?', [email, id])
-    res.json({
-        message: 'Se ha editado correctamente tu correo electronico',
-        data: email
-    })
+
+    if (validator.isEmpty(email, { ignore_whitespace: true }) == true) {
+        res.json({
+            message: 'Campo vacio.'
+        })
+    }
+    let contA = 0;
+    let contP = 0;
+    for (let i = 0; i < email.length; i++) {
+        if (email.charAt(i) == '@') {
+            contA++;
+        }
+        if (email.charAt(i) == '.') {
+            contP++;
+        }
+    }
+    if (contA > 1 || contA < 1) {
+        res.json({
+            message: 'El campo email no puede tener mas de un arroba o no tener.'
+        })
+    }
+    if (contP > 4 || contP < 1) {
+        res.json({
+            message: 'El campo email no puede tener mas de 4 puntos o no tener.'
+        })
+    }
+    if (validator.isLength(email, { min: 8, max: 40 }) == false) {
+        res.json({
+            message: 'El campo email va del rango 8-40'
+        })
+    } else {
+        await pool.query('update Usuario set email_usu=? where id_usu=?', [email, id])
+        res.json({
+            message: 'Se ha editado correctamente tu correo electronico',
+            data: email
+        })
+    }
 })
 
 router.post('/editUsuario', isLoggedIn, async(req, res) => {
     const { usuario } = req.body
     const id = req.user.id_usu
-    await pool.query('update Usuario set nom_usu=? where id_usu=?', [usuario, id])
-    res.json({
-        message: 'Se ha editado correctamente tu usuario',
-        data: usuario
-    })
+
+    if (validator.isEmpty(usuario, { ignore_whitespace: true }) == true) {
+        res.json({
+            message: 'El campo Usuario no puede estar vacio'
+        })
+    }
+    if (validator.isAlphanumeric(usuario) == false) {
+        res.json({
+            message: 'El campo Usuario no permite Caracteres especiales'
+        })
+    }
+    if (validator.isLength(usuario, { min: 5, max: 20 }) == false) {
+        res.json({
+            message: 'El campo Usuario va del rango 5-20'
+        })
+    } else {
+        await pool.query('update Usuario set nom_usu=? where id_usu=?', [usuario, id])
+        res.json({
+            message: 'Se ha editado correctamente tu usuario',
+            data: usuario
+        })
+    }
 })
 
 router.post('/editPassword', isLoggedIn, async(req, res) => {
@@ -225,10 +299,51 @@ router.post('/editPassword', isLoggedIn, async(req, res) => {
     if (await helpers.decrypt(psw[0].psw_usu) === oldPassword) {
         if (newPassword === confirmPassword) {
             const superNew = await helpers.encrypt(newPassword)
-            await pool.query('update Usuario set psw_usu=? where id_usu=?', [superNew, id])
-            res.json({
-                message: 'La contraseña se ha actualizado correctamente, ahora no la olvides.'
-            })
+                //validaciones de la contraseña
+            if (validator.isEmpty(oldPassword, { ignore_whitespace: true }) == true) {
+                res.json({
+                    message: 'El campo contraseña no puede estar vacio'
+                })
+            }
+            if (validator.isLength(oldPassword, { min: 8, max: 16 }) == false) {
+                res.json({
+                    message: 'El campo contraseña debe contener de 8 a 16 caracteres'
+                })
+            }
+            if (validator.isAlphanumeric(oldPassword) == false) {
+                res.json({
+                    message: 'El campo contraseña no permite Caracteres especiales'
+                })
+            }
+
+            if (validator.isEmpty(newPassword, { ignore_whitespace: true }) == true) {
+                res.json({
+                    message: 'El campo contraseña no puede estar vacio'
+                })
+            }
+            if (validator.isLength(newPassword, { min: 8, max: 16 }) == false) {
+                res.json({
+                    message: 'El campo contraseña debe contener de 8 a 16 caracteres'
+                })
+            }
+            if (validator.isAlphanumeric(newPassword) == false) {
+                res.json({
+                    message: 'El campo contraseña no permite Caracteres especiales'
+                })
+            }
+
+            //Validacion de la segunda contraseña
+            if (validator.isEmpty(confirmPassword) == true) {
+                res.json({
+                    message: 'El campo confirmar contraseña no puede estar vacio'
+                })
+            } else {
+                await pool.query('update Usuario set psw_usu=? where id_usu=?', [superNew, id])
+                res.json({
+                    message: 'La contraseña se ha actualizado correctamente, ahora no la olvides.'
+                })
+            }
+
         } else {
             res.json({
                 message: 'La confirmación de la contraseña y la nueva contraseña no coinciden.'
