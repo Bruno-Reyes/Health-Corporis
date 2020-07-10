@@ -2,7 +2,9 @@
     body{
         background:  #fdebd0 ;    
     }
-
+    #Centrar{
+        justify-content: center;
+    }
 </style>
 
 <script src="/js/frecuencia.js"></script>
@@ -29,15 +31,16 @@
     <div class="tips">
         {{#each exercises}}
         <div class="card border">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="{{img_eje}}">
+            <div class="card-image waves-effect waves-block waves-light" id="Centrar" align="middle" style="background-color:
+#FCCD8F;"><br>
+                <video class="activator" src={{img_eje}} controls loop width="850" height="420"></video>
             </div>
             <div class="card-content" style="text-align: center;">
                 <span class="card-title grey-text text-darken-4">
                     {{nom_eje}}
                 </span>
                 <button class="activator waves-effect waves-light btn">
-                    Ver
+                    Descripción
                 </button>
             </div>
             <div class="card-reveal">

@@ -1,4 +1,7 @@
 <style>
+    body{
+            background:  #fdebd0 ;    
+        }
     .tips {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -60,7 +63,8 @@
         {{#each quemagrasa}}
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img loading="lazy" class="activator img-eje" src={{img_eje}}>
+                {{!--<img loading="lazy" class="activator img-eje" src={{img_eje}}>--}}
+                <video loading="lazy" class="activator img-eje" src={{img_eje}} controls loop width="350" height="350"></video>
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">
@@ -115,7 +119,7 @@
         {{#each cardio}}
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img loading="lazy" class="activator img-eje" src={{img_eje}}>
+                <video loading="lazy" class="activator img-eje" src={{img_eje}} controls loop width="350" height="350"></video>
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">
@@ -171,7 +175,7 @@
         {{#each altoRend}}
         <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-                <img loading="lazy" class="activator img-eje" src={{img_eje}}>
+                <video loading="lazy" class="activator img-eje" src={{img_eje}} controls loop width="350" height="350"></video>
             </div>
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">

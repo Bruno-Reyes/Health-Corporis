@@ -12,8 +12,13 @@
     height: 300px;
 }
 
+#Entrar { 
+    background: #fcaf17;
+}
+
 .error {
-    color: red;
+    color: #e31f26;
+    
 }
 
 .whisper {
@@ -22,12 +27,12 @@
 }
 
 .older {
-    color: blue;
+    color: #005693;
     font-family: "Courier New", Courier, monospace;
 }
 
 .old-admin {
-    color: blue;
+    color: #005693;
     font-style: italic;
 }
 

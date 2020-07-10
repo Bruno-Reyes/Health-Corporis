@@ -16,7 +16,8 @@ function drawChartGender() {
         ]);
 
         let options = {
-            title: 'Genero'
+            title: 'Genero',
+            colors: ['#662d91','#005693']
         };
 
         let chart = new google.visualization.PieChart(document.getElementById('chartGender'));
@@ -59,6 +60,7 @@ function drawChartAges() {
         let options = {
             title: 'Rangos de edades de usuarios',
             is3D: true,
+            colors: ['#662d91','#005693','#f37021','#e31f26']
         };
 
         let chart = new google.visualization.PieChart(document.getElementById('chartAges'));
@@ -66,7 +68,7 @@ function drawChartAges() {
     })
 }
 
-function drawChartFrecuency() {
+function drawChartFrecuency() { 
     getFrecuency().then(row => {
         let under = 0
         let over = 0
@@ -93,7 +95,8 @@ function drawChartFrecuency() {
 
         var options = {
             title: 'Anormalidades en frecuencias cardiacas en reposo',
-            pieHole: 0.4
+            pieHole: 0.4,
+            colors: ['#662d91','#005693','#a3238e','#e31f26']
         }
 
         let chart = new google.visualization.PieChart(document.getElementById('chartFrecuency'));
@@ -120,9 +123,9 @@ function drawChartEnfermedades() {
         }
         let data = google.visualization.arrayToDataTable([
             ['Enfermedad', 'Cantidad de personas', { role: 'style' }],
-            ['Ninguna', ninguna, '# #58d68d'],
-            ['Cardiovascular', cardiovascular, '#eb984e '],
-            ['Respiratoria', respiratoria, ' #e74c3c ']
+            ['Ninguna', ninguna, '#662d91'],
+            ['Cardiovascular', cardiovascular, '#005693'],
+            ['Respiratoria', respiratoria, '#a3238e']
         ])
 
         let options = {
@@ -160,11 +163,11 @@ function drawChartEjercicios() {
         }
         let data = google.visualization.arrayToDataTable([
             ['Cantidad de ejercicio', 'Num. Personas', { role: 'style' }],
-            ['Nunca', nunca, '#85c1e9'],
-            ['Raramente', raramente, '#f1c40f'],
-            ['Ocasionalmente', ocasionalmente, '#00FFFF'],
-            ['Generalmente', generalmente, '#a569bd'],
-            ['Siempre', siempre, '#00FF00']
+            ['Nunca', nunca, '#662d91'],
+            ['Raramente', raramente, '#005693'],
+            ['Ocasionalmente', ocasionalmente, '#a3238e'],
+            ['Generalmente', generalmente, '#e31f26'],
+            ['Siempre', siempre, '#00a651']
         ])
 
         let options = {
@@ -215,16 +218,17 @@ function drawChartImc() {
         }
 
         let data = google.visualization.arrayToDataTable([
-            ['Estado de salud', 'No. Personas', { role: 'style' }],
-            ['Infrapeso', infrapeso, '#85c1e9'],
-            ['Normal', normal, '#f1c40f'],
-            ['sobrepeso', sobrepeso, '#00FFFF'],
-            ['Obesidad', obesidad, '#00FF00']
+            ['Estado de salud', 'No. Personas'],
+            ['Infrapeso', infrapeso],
+            ['Normal', normal],
+            ['sobrepeso', sobrepeso],
+            ['Obesidad', obesidad]
         ])
 
         var options = {
             title: 'Estado de la salud',
-            pieHole: 0.6
+            pieHole: 0.6,
+            colors: ['#662d91','#005693','#a3238e','#e31f26']
         }
 
         var chart = new google.visualization.PieChart(document.getElementById('chartImc'));
