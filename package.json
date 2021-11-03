@@ -36,7 +36,7 @@
     "socket.io": "^2.3.0",
     "sweetalert": "^2.1.2",
     "uuid": "^7.0.3",
-    "validator": "^12.2.0"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "handlebars": "^4.7.6",
